@@ -2091,42 +2091,74 @@ spawn(function()
 		end)
 	end)
 	
-    spawn(function()
-        while wait() do
-            if _G.FastFarmMode and World1 then
-                pcall(function()
-                if game.Players.LocalPlayer.Data.Level.Value >= 10 then
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047))
-                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                            if v.Name == "Royal Soldier" then
-                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                    repeat task.wait()
-                                        AutoHaki()
-                                        EquipWeapon(_G.SelectWeapon)
-                                        v.HumanoidRootPart.CanCollide = false
-                                        v.Humanoid.WalkSpeed = 0
-                                        StardMag = true
-                                        FastMon = v.HumanoidRootPart.CFrame
-                                        v.HumanoidRootPart.Size = Vector3.new(80,80,80)                             
-                                        TP1(v.HumanoidRootPart.CFrame * Pos)
-                                        game:GetService("VirtualUser"):CaptureController()
-                                        game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
-                                    until not _G.FastFarmMode or not v.Parent or v.Humanoid.Health <= 0
-                                    StardMag = false
-                                    TP1(CFrame.new(-7936.94922, 5606.22607, -1625.01245, 0.342042685, 0, -0.939684391, 0, 1, 0, 0.939684391, 0, 0.342042685))
-                                    UnEquipWeapon(_G.SelectWeapon)
-                                end
-                            end
-                        end
-                    else
-                        if game:GetService("ReplicatedStorage"):FindFirstChild("Royal Soldier") then
-                            TP1(game:GetService("ReplicatedStorage"):FindFirstChild("Royal Soldier").HumanoidRootPart.CFrame * CFrame.new(5,10,2))
-                        end
-                    end
-                end)
+spawn(function()
+    -- ตรวจสอบว่า FastFarmMode เปิดใช้งานและ World1 มีค่า
+    if _G.FastFarmMode and World1 then
+        pcall(function()
+            -- ตรวจสอบระดับของผู้เล่นก่อนการส่งคำขอ
+            if game.Players.LocalPlayer.Data.Level.Value >= 10 then
+                -- ส่งคำขอ requestEntrance เพียงครั้งเดียว
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047))
+            end
+        end)
+    end
+end)
+		spawn(function()
+    while wait() do
+        -- ตั้งค่า CFrame สำหรับตำแหน่งเริ่มต้น
+        CFrameQuest = CFrame.new(-7850, 5637, -1502)
+
+        -- ตรวจสอบและวนลูปผ่านศัตรูที่อยู่ใน Workspace
+        for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+            -- เช็คว่าชื่อของศัตรูคือ "Royal Soldier"
+            if v.Name == "Royal Soldier" then
+                -- ตรวจสอบว่าศัตรูมี "Humanoid" และ "HumanoidRootPart" และ Health มากกว่า 0
+                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                    -- เริ่มทำงานซ้ำๆ สำหรับศัตรูที่ยังไม่ตาย
+                    repeat
+                        task.wait()
+                        -- เรียกใช้งานฟังก์ชัน AutoHaki และสวมอาวุธ
+                        AutoHaki()
+                        EquipWeapon(_G.SelectWeapon)
+
+                        -- ปิดการชนของ HumanoidRootPart และลดความเร็วของการเดิน
+                        v.HumanoidRootPart.CanCollide = false
+                        v.Humanoid.WalkSpeed = 0
+
+                        -- เริ่มกระบวนการ
+                        StardMag = true
+                        FastMon = v.HumanoidRootPart.CFrame
+                        v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+
+                        -- Teleport ไปยังตำแหน่งที่กำหนด
+                        TP1(v.HumanoidRootPart.CFrame * Pos)
+
+                        -- จำลองการกดปุ่มเมาส์
+                        game:GetService("VirtualUser"):CaptureController()
+                        game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672))
+                    until not _G.FastFarmMode or not v.Parent or v.Humanoid.Health <= 0
+
+                    -- เมื่อการทำงานเสร็จสิ้น
+                    StardMag = false
+                    -- Teleport ไปยังตำแหน่งใหม่หลังจากทำเสร็จ
+                    TP1(CFrame.new(-7936.94922, 5606.22607, -1625.01245, 0.342042685, 0, -0.939684391, 0, 1, 0, 0.939684391, 0, 0.342042685))
+
+                    -- ถอดอาวุธที่เลือกออก
+                    UnEquipWeapon(_G.SelectWeapon)
+                end
             end
         end
-    end)
+
+        -- หากไม่พบศัตรูใน Workspace, ลองตรวจสอบใน ReplicatedStorage
+        if not game:GetService("Workspace"):FindFirstChild("Royal Soldier") then
+            local royalSoldier = game:GetService("ReplicatedStorage"):FindFirstChild("Royal Soldier")
+            if royalSoldier and royalSoldier:FindFirstChild("HumanoidRootPart") then
+                -- Teleport ไปยังตำแหน่งที่ใกล้กับ "Royal Soldier"
+                TP1(royalSoldier.HumanoidRootPart.CFrame * CFrame.new(5, 10, 2))
+            end
+        end
+    end
+end)
 	
 	spawn(function()
 		pcall(function()
