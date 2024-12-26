@@ -2097,7 +2097,11 @@ spawn(function()
         pcall(function()
             -- ตรวจสอบระดับของผู้เล่นก่อนการส่งคำขอ
             if game.Players.LocalPlayer.Data.Level.Value >= 10 then
-                -- ส่งคำขอ requestEntrance เพียงครั้งเดียว
+                -- ส่งคำขอ requestEntrance ครั้งที่ 1
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047))
+                
+                -- ส่งคำขอ requestEntrance ครั้งที่ 2 หลังจากวาปครั้งแรก
+                wait(1)  -- รอ 1 วินาทีระหว่างการวาปทั้งสองครั้ง
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047))
             end
         end)
