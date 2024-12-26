@@ -130,10 +130,6 @@ _G.AutoFarm = true
             CFrameQuest = CFrame.new(-1598.08911, 35.5501175, 153.377838, 0, 0, 1, 0, 1, -0, -1, 0, 0)
             CFrameMon = CFrame.new(-1267.89001, 66.2034225, -531.818115, -0.813996196, -5.25169774e-08, -0.580869019, -5.58769671e-08, 1, -1.21082593e-08, 0.580869019, 2.26011476e-08, -0.813996196)
             
-            if MyLevel >= 25 then
-                _G.SelectBoss = "The Gorilla King [MyLevel. 25] [Boss]" 
-            end
-            SelectMonster = "Monkey"
         elseif MyLevel >= 30 and MyLevel <= 40-1 or SelectMonster == "Pirate" then
              
             Mon = "Pirate"
@@ -142,7 +138,6 @@ _G.AutoFarm = true
             NameMon = "Pirate"
             CFrameQuest = CFrame.new(-1141.07483, 4.10001802, 3831.5498, 0.965929627, -0, -0.258804798, 0, 1, -0, 0.258804798, 0, 0.965929627)
             CFrameMon = CFrame.new(-1169.5365, 5.09531212, 3933.84082, -0.971822679, -3.73200315e-09, 0.235713184, -4.16762763e-10, 1, 1.41145424e-08, -0.235713184, 1.3618596e-08, -0.971822679)
-            
             
         elseif MyLevel >= 40 and MyLevel <= 60-1 or SelectMonster == "Brute" then
             
@@ -153,10 +148,6 @@ _G.AutoFarm = true
             CFrameQuest = CFrame.new(-1141.07483, 4.10001802, 3831.5498, 0.965929627, -0, -0.258804798, 0, 1, -0, 0.258804798, 0, 0.965929627)
             CFrameMon = CFrame.new(-1165.09985, 15.1531372, 4363.51514, -0.962800264, 1.17564889e-06, 0.270213336, 2.60172015e-07, 1, -3.4237969e-06, -0.270213336, -3.22613073e-06, -0.962800264)
             
-            if MyLevel >= 55 then
-                _G.SelectBoss = "Bobby [MyLevel. 55] [Boss]"
-            end
-            SelectMonster = "Pirate"
         elseif MyLevel >= 60 and MyLevel <= 75-1 or SelectMonster == "Desert Bandit" then
              
             Mon = "Desert Bandit"
@@ -194,11 +185,6 @@ _G.AutoFarm = true
             CFrameQuest = CFrame.new(1389.74451, 86.6520844, -1298.90796, -0.342042685, 0, 0.939684391, 0, 1, 0, -0.939684391, 0, -0.342042685)
             CFrameMon = CFrame.new(1376.86401, 97.2779999, -1396.93115, -0.986755967, 7.71178321e-08, -0.162211925, 7.71531674e-08, 1, 6.08143536e-09, 0.162211925, -6.51427134e-09, -0.986755967)
             
-            if MyLevel >= 110 then
-                _G.SelectBoss = "Yeti [MyLevel. 110] [Boss]"
-            end
-            SelectMonster = "Snow Bandit"
-            _G.Farm_Mon = true
         elseif MyLevel == 120 or MyLevel <= 174 or SelectMonster == "Chief Petty Officer" then -- Chief Petty Officer
             Mon = "Chief Petty Officer"
             NameQuest = "MarineQuest2"
@@ -206,10 +192,6 @@ _G.AutoFarm = true
             NameMon = "Chief Petty Officer"
             CFrameQuest = CFrame.new(-5039.58643, 27.3500385, 4324.68018, 0, 0, -1, 0, 1, 0, 1, 0, 0)
             CFrameMon = CFrame.new(-4882.8623, 22.6520386, 4255.53516, 0.273695946, -5.40380647e-08, -0.96181643, 4.37720793e-08, 1, -4.37274998e-08, 0.96181643, -3.01326679e-08, 0.273695946)
-            
-            if MyLevel >= 130 then
-                _G.SelectBoss = "Vice Admiral [MyLevel. 130] [Boss]"
-            end
             
         elseif SelectMonster == "Sky Bandit" then -- Sky Bandit
             Mon = "Sky Bandit"
@@ -249,16 +231,6 @@ _G.AutoFarm = true
             CFrameQuest = CFrame.new(5308.93115, 1.65517521, 475.120514, -0.0894274712, -5.00292918e-09, -0.995993316, 1.60817859e-09, 1, -5.16744869e-09, 0.995993316, -2.06384709e-09, -0.0894274712)
             CFrameMon = CFrame.new(5433.39307, 88.678093, 514.986877, 0.879988372, 0, -0.474995494, 0, 1, 0, 0.474995494, 0, 0.879988372)
             
-            if MyLevel >= 240 then
-                _G.SelectBoss = "Swan [MyLevel. 240] [Boss]"
-                
-            elseif MyLevel >= 230 then
-                _G.SelectBoss = "Chief Warden [MyLevel. 230] [Boss]"
-                
-            elseif MyLevel >= 220 then
-                _G.SelectBoss = "Warden [MyLevel. 220] [Boss]"
-            end
-            SelectMonster = "Prisoner [MyLevel. 190]"
         elseif MyLevel == 250 or MyLevel <= 274 or SelectMonster == "Toga Warrior" then -- Toga Warrior
              
             Mon = "Toga Warrior"
