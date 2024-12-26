@@ -113,10 +113,11 @@ _G.AutoFarm = true
             CFrameMon = CFrame.new(1353.44885, 3.40935516, 1376.92029, 0.776053488, -6.97791975e-08, 0.630666852, 6.99138596e-08, 1, 2.4612488e-08, -0.630666852, 2.49917598e-08, 0.776053488)
 
 -- ตรวจสอบระดับของผู้เล่นก่อนการวาป
+StardMag = true
 if game.Players.LocalPlayer.Data.Level.Value >= 10 then
     -- ส่งคำขอ requestEntrance เพียงครั้งเดียว
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047))
-
+StardMag = false
     -- ตรวจสอบระดับผู้เล่นอีกครั้งและมอนสเตอร์ที่เลือก
     if game.Players.LocalPlayer.Data.Level.Value >= 10 and (MyLevel == 10 or MyLevel <= 74 or SelectMonster == "Royal Soldier") then
         -- กำหนดมอนสเตอร์ที่ต้องการ
