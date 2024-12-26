@@ -112,15 +112,20 @@ _G.AutoFarm = true
             CFrameQuest = CFrame.new(1059.37195, 15.4495068, 1550.4231, 0.939700544, -0, -0.341998369, 0, 1, -0, 0.341998369, 0, 0.939700544)
             CFrameMon = CFrame.new(1353.44885, 3.40935516, 1376.92029, 0.776053488, -6.97791975e-08, 0.630666852, 6.99138596e-08, 1, 2.4612488e-08, -0.630666852, 2.49917598e-08, 0.776053488)
 
+-- ตรวจสอบระดับของผู้เล่นก่อนการวาป
 if game.Players.LocalPlayer.Data.Level.Value >= 10 then
     -- ส่งคำขอ requestEntrance เพียงครั้งเดียว
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance", Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047))
-end  
-		elseif MyLevel == 10 or MyLevel <= 74 or SelectMonster == "Royal Soldier" then
 
-		    Mon = "Royal Soldier"
-			NameMon = "Royal Soldier"
-			CFrameMon = CFrame.new(-7575.06396, 5588.23877, -1689.05713, 0.10454309, 0, -0.994520426, 0, -1.00000024, -0, -0.994520426, 0, -0.104543328)
+    -- ตรวจสอบระดับผู้เล่นอีกครั้งและมอนสเตอร์ที่เลือก
+    if game.Players.LocalPlayer.Data.Level.Value >= 10 and (MyLevel == 10 or MyLevel <= 74 or SelectMonster == "Royal Soldier") then
+        -- กำหนดมอนสเตอร์ที่ต้องการ
+        Mon = "Royal Soldier"
+        NameMon = "Royal Soldier"
+        -- กำหนดตำแหน่งที่มอนสเตอร์จะไป
+        CFrameMon = CFrame.new(-7575.06396, 5588.23877, -1689.05713, 0.10454309, 0, -0.994520426, 0, -1.00000024, -0, -0.994520426, 0, -0.104543328)
+    end
+end
 
         elseif MyLevel == 75 or MyLevel <= 89 or SelectMonster == "Desert Officer" then -- Desert Officer
 
