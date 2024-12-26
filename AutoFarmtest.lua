@@ -808,7 +808,7 @@ spawn(function()
                 CheckQuest()
                 for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                     -- ตรวจสอบการเปิดใช้งาน AutoFarm, StartMagnet, และมอนสเตอร์ที่เลือก
-                    if _G.AutoFarm and StartMagnet and v.Name == Mon and (Mon == "Bandit" or Mon == "Monkey" or Mon == "Gorilla")
+                    if _G.AutoFarm and StartMagnet and v.Name == Mon and (Mon == "Bandit" or Mon == "Monkey" or Mon == "Gorilla" or Mpn == "Pirate" or Mon == "Brute")
  and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                         
                         -- คำนวณระยะห่างจากผู้เล่น
