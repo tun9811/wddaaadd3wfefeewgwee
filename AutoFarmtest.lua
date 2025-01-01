@@ -89,7 +89,7 @@ function CheckQuest()
             CFrameMon = CFrame.new(1134, 197, -1543) 
         elseif MyLevel == 120 or MyLevel <= 149 or SelectMonter ==  "Chief Petty Officer" then
             Mon = "Chief Petty Officer"
-            NameQuest = "MarineQuest1"
+            NameQuest = "MarineQuest2"
             LevelQuest = 1
             NameMon = "Chief Petty Officer"
             CFrameQuest = CFrame.new(-5039.58643, 27.3500385, 4324.68018, -0.422094226, -0, -0.906552136, 0, 1, -0, 0.906552136, 0, -0.422094226)
