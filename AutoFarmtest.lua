@@ -89,7 +89,7 @@ function CheckQuest()
             CFrameMon = CFrame.new(1134, 197, -1543) 
         elseif MyLevel == 120 or MyLevel <= 149 or SelectMonter ==  "Chief Petty Officer" then
             Mon = "Chief Petty Officer"
-            NameQuest = "MarineQuest2"
+            NameQuest = "MarineQuest"
             LevelQuest = 1
             NameMon = "Chief Petty Officer"
             CFrameQuest = CFrame.new(-5039.58643, 27.3500385, 4324.68018, -0.422094226, -0, -0.906552136, 0, 1, -0, 0.906552136, 0, -0.422094226)
@@ -2548,7 +2548,7 @@ spawn(function()
     end
 end)
 
-local General1 = Tabs.General1:AddSection("🦴 Auto farm Bone 🦴")
+local General1 = Tabs.General1:AddSection("🦴 Auto Farm Bone 🦴")
 local Toggle = Tabs.General1:AddToggle("AutoFarmBone", {
     Title = "Auto Farm Bone", 
     Description = "",
@@ -2696,7 +2696,7 @@ local Toggle = Tabs.General2:AddToggle("AutoBartilo", {
             end
         end)
     end)
-local General3 = Tabs.General3:AddSection("Fighting Styles")
+local General3 = Tabs.General3:AddSection("🦿 Fighting Styles 🦿")
 Tabs.General3:AddButton({
     Title = " Buy Black Leg $1500,000Beli",
     Description = "",
@@ -2872,7 +2872,7 @@ spawn(function()
                                 repeat task.wait()
                                     EquipWeapon(_G.SelectWeapon)
                                     AutoHaki()
-                                    v.HumanoidRootPart.CanCollide = false
+                                    v.HumanoidRootPart.CanCollide = true
                                     Mon = v.HumanoidRootPart.CFrame
                                     TP1(v.HumanoidRootPart.CFrame * CFrame.new(0,35,0))
                                     game:GetService'VirtualUser':CaptureController()
