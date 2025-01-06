@@ -2361,6 +2361,7 @@ spawn(function()
                             end
                         end
                     else
+					wait(0.5)
                         FastTP(CFrameMon)
                         StartMagnet = false
                         if game:GetService("ReplicatedStorage"):FindFirstChild(Mon) then
