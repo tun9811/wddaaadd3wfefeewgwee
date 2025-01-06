@@ -1281,7 +1281,7 @@ function CheckQuest()
 			end
 		end
         if World3 then
-		if MyLevel == 1500 or MyLevel <= 1524 or SelectMonter == "Pirate Millionaire" then
+		if MyLevel == 1500 or MyLevel <= 1524 or selectMonter == "Pirate Millionaire" then
 			Mon ="Pirate Millionaire"
             NameQuest = "PiratePortQuest"
 			LevelQuest = 1
@@ -1323,224 +1323,224 @@ function CheckQuest()
             NameMon = "Venomous Assailant"
             CFrameQuest = CFrame.new(5214.33936, 1003.46765, 759.507324, 0.92051065, 0, 0.390717506, 0, 1, 0, -0.390717506, 0, 0.92051065)
             CFrameMon = CFrame.new(4589, 1226, 911) 
-         elseif MyLevel == 1700 or MyLevel <= 1724 or SelectMonter == "Marine Commodore" then -- Marine Commodore
+         elseif MyLevel == 1700 or MyLevel <= 1724 or SelectMonster == "Marine Commodore" then -- Marine Commodore
             Mon = "Marine Commodore"
             NameQuest = "MarineTreeIsland"
             LevelQuest = 1
             NameMon = "Marine Commodore"
             CFrameQuest = CFrame.new(2179.98828125, 28.731239318848, -6740.0551757813)
             CFrameMon = CFrame.new(2198.0063476563, 128.71075439453, -7109.5043945313)
-        elseif MyLevel == 1725 or MyLevel <= 1774 or SelectMonter == "Marine Rear Admiral" then -- Marine Rear Admiral
+        elseif MyLevel == 1725 or MyLevel <= 1774 or SelectMonster == "Marine Rear Admiral" then -- Marine Rear Admiral
             Mon = "Marine Rear Admiral"
             NameQuest = "MarineTreeIsland"
             LevelQuest = 2
             NameMon = "Marine Rear Admiral"
             CFrameQuest = CFrame.new(2179.98828125, 28.731239318848, -6740.0551757813)
             CFrameMon = CFrame.new(3294.3142089844, 385.41125488281, -7048.6342773438)
-        elseif MyLevel == 1775 or MyLevel <= 1799 or SelectMonter == "Fishman Raider" then -- Fishman Raide
+        elseif MyLevel == 1775 or MyLevel <= 1799 or SelectMonster == "Fishman Raider" then -- Fishman Raide
             Mon = "Fishman Raider"
             NameQuest = "DeepForestIsland3"
             LevelQuest = 1
             NameMon = "Fishman Raider"
             CFrameQuest = CFrame.new(-10582.759765625, 331.78845214844, -8757.666015625)
             CFrameMon = CFrame.new(-10553.268554688, 521.38439941406, -8176.9458007813)
-        elseif MyLevel == 1800 or MyLevel <= 1824 or SelectMonter == "Fishman Captain" then -- Fishman Captain
+        elseif MyLevel == 1800 or MyLevel <= 1824 or SelectMonster == "Fishman Captain" then -- Fishman Captain
             Mon = "Fishman Captain"
             NameQuest = "DeepForestIsland3"
             LevelQuest = 2
             NameMon = "Fishman Captain"
             CFrameQuest = CFrame.new(-10583.099609375, 331.78845214844, -8759.4638671875)
             CFrameMon = CFrame.new(-10789.401367188, 427.18637084961, -9131.4423828125)
-        elseif MyLevel == 1825 or MyLevel <= 1849 or SelectMonter == "Forest Pirate" then -- Forest Pirate
+        elseif MyLevel == 1825 or MyLevel <= 1849 or SelectMonster == "Forest Pirate" then -- Forest Pirate
             Mon = "Forest Pirate"
             NameQuest = "DeepForestIsland"
             LevelQuest = 1
             NameMon = "Forest Pirate"
             CFrameQuest = CFrame.new(-13232.662109375, 332.40396118164, -7626.4819335938)
             CFrameMon = CFrame.new(-13489.397460938, 400.30349731445, -7770.251953125)
-        elseif MyLevel == 1850 or MyLevel <= 1899 or SelectMonter == "Mythological Pirate" then -- Mythological Pirate
+        elseif MyLevel == 1850 or MyLevel <= 1899 or SelectMonster == "Mythological Pirate" then -- Mythological Pirate
             Mon = "Mythological Pirate"
             NameQuest = "DeepForestIsland"
             LevelQuest = 2
             NameMon = "Mythological Pirate"
             CFrameQuest = CFrame.new(-13232.662109375, 332.40396118164, -7626.4819335938)
             CFrameMon = CFrame.new(-13508.616210938, 582.46228027344, -6985.3037109375)
-        elseif MyLevel == 1900 or MyLevel <= 1924 or SelectMonter == "Jungle Pirate" then -- Jungle Pirate
+        elseif MyLevel == 1900 or MyLevel <= 1924 or SelectMonster == "Jungle Pirate" then -- Jungle Pirate
             Mon = "Jungle Pirate"
             NameQuest = "DeepForestIsland2"
             LevelQuest = 1
             NameMon = "Jungle Pirate"
             CFrameQuest = CFrame.new(-12682.096679688, 390.88653564453, -9902.1240234375)
             CFrameMon = CFrame.new(-12267.103515625, 459.75262451172, -10277.200195313)
-        elseif MyLevel == 1925 or MyLevel <= 1974 or SelectMonter == "Musketeer Pirate" then -- Musketeer Pirate
+        elseif MyLevel == 1925 or MyLevel <= 1974 or SelectMonster == "Musketeer Pirate" then -- Musketeer Pirate
             Mon = "Musketeer Pirate"
             NameQuest = "DeepForestIsland2"
             LevelQuest = 2
             NameMon = "Musketeer Pirate"
             CFrameQuest = CFrame.new(-12682.096679688, 390.88653564453, -9902.1240234375)
             CFrameMon = CFrame.new(-13291.5078125, 520.47338867188, -9904.638671875)
-        elseif MyLevelLv == 1975 or MyLevel <= 1999 or SelectMonter == "Reborn Skeleton" then
+        elseif MyLevelLv == 1975 or MyLevel <= 1999 or SelectMonster == "Reborn Skeleton" then
             Mon = "Reborn Skeleton"
             NameQuest = "HauntedQuest1"
             LevelQuest = 1
             NameMon = "Reborn Skeleton"
             CFrameQuest = CFrame.new(-9480.80762, 142.130661, 5566.37305, -0.00655503059, 4.52954225e-08, -0.999978542, 2.04920472e-08, 1, 4.51620679e-08, 0.999978542, -2.01955679e-08, -0.00655503059)
             CFrameMon = CFrame.new(-8761.77148, 183.431747, 6168.33301, 0.978073597, -1.3950732e-05, -0.208259016, -1.08073925e-06, 1, -7.20630269e-05, 0.208259016, 7.07080399e-05, 0.978073597)
-        elseif MyLevel == 2000 or MyLevel <= 2024 or SelectMonter == "Living Zombie" then
+        elseif MyLevel == 2000 or MyLevel <= 2024 or SelectMonster == "Living Zombie" then
             Mon = "Living Zombie"
             NameQuest = "HauntedQuest1"
             LevelQuest = 2
             NameMon = "Living Zombie"
             CFrameQuest = CFrame.new(-9480.80762, 142.130661, 5566.37305, -0.00655503059, 4.52954225e-08, -0.999978542, 2.04920472e-08, 1, 4.51620679e-08, 0.999978542, -2.01955679e-08, -0.00655503059)
             CFrameMon = CFrame.new(-10103.7529, 238.565979, 6179.75977, 0.999474227, 2.77547141e-08, 0.0324240364, -2.58006327e-08, 1, -6.06848474e-08, -0.0324240364, 5.98163865e-08, 0.999474227)
-        elseif MyLevel == 2025 or MyLevel <= 2049 or SelectMonter == "Demonic Soul" then
+        elseif MyLevel == 2025 or MyLevel <= 2049 or SelectMonster == "Demonic Soul" then
             Mon = "Demonic Soul"
             NameQuest = "HauntedQuest2"
             LevelQuest = 1
             NameMon = "Demonic Soul"
             CFrameQuest = CFrame.new(-9516.9931640625, 178.00651550293, 6078.4653320313)
             CFrameMon = CFrame.new(-9712.03125, 204.69589233398, 6193.322265625)
-        elseif MyLevel == 2050 or MyLevel <= 2074 or SelectMonter == "Posessed Mummy" then
+        elseif MyLevel == 2050 or MyLevel <= 2074 or SelectMonster == "Posessed Mummy" then
             Mon = "Posessed Mummy"
             NameQuest = "HauntedQuest2"
             LevelQuest = 2
             NameMon = "Posessed Mummy"
             CFrameQuest = CFrame.new(-9516.9931640625, 178.00651550293, 6078.4653320313)
             CFrameMon = CFrame.new(-9545.7763671875, 69.619895935059, 6339.5615234375)
-        elseif MyLevel == 2075 or MyLevel <= 2099 or SelectMonter == "Peanut Scout" then
+        elseif MyLevel == 2075 or MyLevel <= 2099 or SelectMonster == "Peanut Scout" then
             Mon = "Peanut Scout"
             NameQuest = "NutsIslandQuest"
             LevelQuest = 1
             NameMon = "Peanut Scout"
             CFrameQuest = CFrame.new(-2105.53198, 37.2495995, -10195.5088, -0.766061664, 0, -0.642767608, 0, 1, 0, 0.642767608, 0, -0.766061664)
             CFrameMon = CFrame.new(-2150.587890625, 122.49767303467, -10358.994140625)
-        elseif MyLevel == 2100 or MyLevel <= 2124 or SelectMonter == "Peanut President" then
+        elseif MyLevel == 2100 or MyLevel <= 2124 or SelectMonster == "Peanut President" then
             Mon = "Peanut President"
             NameQuest = "NutsIslandQuest"
             LevelQuest = 2
             NameMon = "Peanut President"
             CFrameQuest = CFrame.new(-2105.53198, 37.2495995, -10195.5088, -0.766061664, 0, -0.642767608, 0, 1, 0, 0.642767608, 0, -0.766061664)
             CFrameMon = CFrame.new(-2150.587890625, 122.49767303467, -10358.994140625)
-        elseif MyLevel == 2125 or MyLevel <= 2149 or SelectMonter == "Ice Cream Chef" then
+        elseif MyLevel == 2125 or MyLevel <= 2149 or SelectMonster == "Ice Cream Chef" then
             Mon = "Ice Cream Chef"
             NameQuest = "IceCreamIslandQuest"
             LevelQuest = 1
             NameMon = "Ice Cream Chef"
             CFrameQuest = CFrame.new(-819.376709, 64.9259796, -10967.2832, -0.766061664, 0, 0.642767608, 0, 1, 0, -0.642767608, 0, -0.766061664)
             CFrameMon = CFrame.new(-789.941528, 209.382889, -11009.9805, -0.0703101531, -0, -0.997525156, -0, 1.00000012, -0, 0.997525275, 0, -0.0703101456)
-        elseif MyLevel == 2150 or MyLevel <= 2199 or SelectMonter == "Ice Cream Commander" then
+        elseif MyLevel == 2150 or MyLevel <= 2199 or SelectMonster == "Ice Cream Commander" then
             Mon = "Ice Cream Commander"
             NameQuest = "IceCreamIslandQuest"
             LevelQuest = 2
             NameMon = "Ice Cream Commander"
             CFrameQuest = CFrame.new(-819.376709, 64.9259796, -10967.2832, -0.766061664, 0, 0.642767608, 0, 1, 0, -0.642767608, 0, -0.766061664)
             CFrameMon = CFrame.new(-789.941528, 209.382889, -11009.9805, -0.0703101531, -0, -0.997525156, -0, 1.00000012, -0, 0.997525275, 0, -0.0703101456)
-        elseif MyLevel == 2200 or MyLevel <= 2224 or SelectMonter == "Cookie Crafter" then
+        elseif MyLevel == 2200 or MyLevel <= 2224 or SelectMonster == "Cookie Crafter" then
             Mon = "Cookie Crafter"
             NameQuest = "CakeQuest1"
             LevelQuest = 1
             NameMon = "Cookie Crafter"
             CFrameQuest = CFrame.new(-2022.29858, 36.9275894, -12030.9766, -0.961273909, 0, -0.275594592, 0, 1, 0, 0.275594592, 0, -0.961273909)
             CFrameMon = CFrame.new(-2321.71216, 36.699482, -12216.7871, -0.780074954, 0, 0.625686109, 0, 1, 0, -0.625686109, 0, -0.780074954)
-        elseif MyLevel == 2225 or MyLevel <= 2249 or SelectMonter == "Cake Guard" then
+        elseif MyLevel == 2225 or MyLevel <= 2249 or SelectMonster == "Cake Guard" then
             Mon = "Cake Guard"
             NameQuest = "CakeQuest1"
             LevelQuest = 2
             NameMon = "Cake Guard"
             CFrameQuest = CFrame.new(-2022.29858, 36.9275894, -12030.9766, -0.961273909, 0, -0.275594592, 0, 1, 0, 0.275594592, 0, -0.961273909)
             CFrameMon = CFrame.new(-1418.11011, 36.6718941, -12255.7324, 0.0677844882, 0, 0.997700036, 0, 1, 0, -0.997700036, 0, 0.0677844882)
-        elseif MyLevel == 2250 or MyLevel <= 2274 or SelectMonter == "Baking Staff" then
+        elseif MyLevel == 2250 or MyLevel <= 2274 or SelectMonster == "Baking Staff" then
             Mon = "Baking Staff"
             NameQuest = "CakeQuest2"
             LevelQuest = 1
             NameMon = "Baking Staff"
             CFrameQuest = CFrame.new(-1928.31763, 37.7296638, -12840.626, 0.951068401, -0, -0.308980465, 0, 1, -0, 0.308980465, 0, 0.951068401)
             CFrameMon = CFrame.new(-1980.43848, 36.6716766, -12983.8418, -0.254443765, 0, -0.967087567, 0, 1, 0, 0.967087567, 0, -0.254443765)
-        elseif MyLevel == 2275 or MyLevel <= 2299 or SelectMonter == "Head Baker" then
+        elseif MyLevel == 2275 or MyLevel <= 2299 or SelectMonster == "Head Baker" then
             Mon = "Head Baker"
             NameQuest = "CakeQuest2"
             LevelQuest = 2
             NameMon = "Head Baker"
             CFrameQuest = CFrame.new(-1928.31763, 37.7296638, -12840.626, 0.951068401, -0, -0.308980465, 0, 1, -0, 0.308980465, 0, 0.951068401)
             CFrameMon = CFrame.new(-2251.5791, 52.2714615, -13033.3965, -0.991971016, 0, -0.126466095, 0, 1, 0, 0.126466095, 0, -0.991971016)
-        elseif MyLevel == 2300 or MyLevel <= 2324 or SelectMonter == "Cocoa Warrior" then
+        elseif MyLevel == 2300 or MyLevel <= 2324 or SelectMonster == "Cocoa Warrior" then
             Mon = "Cocoa Warrior"
             NameQuest ="ChocQuest1"
             LevelQuest = 1
             NameMon = "Cocoa Warrior"
             CFrameQuest = CFrame.new(231.75, 23.9003029, -12200.292, -1, 0, 0, 0, 1, 0, 0, 0, -1)
             CFrameMon = CFrame.new(167.978516, 26.2254658, -12238.874, -0.939700961, 0, 0.341998369, 0, 1, 0, -0.341998369, 0, -0.939700961)
-        elseif MyLevel == 2325 or MyLevel <= 2349 or SelectMonter == "Chocolate Bar Battler" then
+        elseif MyLevel == 2325 or MyLevel <= 2349 or SelectMonster == "Chocolate Bar Battler" then
             Mon = "Chocolate Bar Battler"
             NameQuest = "ChocQuest1"
             LevelQuest = 2
             NameMon = "Chocolate Bar Battler"
             CFrameQuest = CFrame.new(231.75, 23.9003029, -12200.292, -1, 0, 0, 0, 1, 0, 0, 0, -1)
             CFrameMon = CFrame.new(701.312073, 25.5824986, -12708.2148, -0.342042685, 0, -0.939684391, 0, 1, 0, 0.939684391, 0, -0.342042685)
-        elseif MyLevel == 2350 or MyLevel <= 2374 or SelectMonter == "Sweet Thief" then
+        elseif MyLevel == 2350 or MyLevel <= 2374 or SelectMonster == "Sweet Thief" then
             Mon = "Sweet Thief"
             NameQuest = "ChocQuest2"
             LevelQuest = 1
             NameMon = "Sweet Thief"
             CFrameQuest = CFrame.new(151.198242, 23.8907146, -12774.6172, 0.422592998, 0, 0.906319618, 0, 1, 0, -0.906319618, 0, 0.422592998)
             CFrameMon = CFrame.new(-140.258301, 25.5824986, -12652.3115, 0.173624337, -0, -0.984811902, 0, 1, -0, 0.984811902, 0, 0.173624337)
-        elseif MyLevel == 2375 or MyLevel <= 2400 or SelectMonter == "Candy Rebel" then
+        elseif MyLevel == 2375 or MyLevel <= 2400 or SelectMonster == "Candy Rebel" then
             Mon = "Candy Rebel"
             NameQuest = "ChocQuest2"
             LevelQuest = 2
             NameMon = "Candy Rebel"
             CFrameQuest = CFrame.new(151.198242, 23.8907146, -12774.6172, 0.422592998, 0, 0.906319618, 0, 1, 0, -0.906319618, 0, 0.422592998)
             CFrameMon = CFrame.new(47.9231453, 25.5824986, -13029.2402, -0.819156051, 0, -0.573571265, 0, 1, 0, 0.573571265, 0, -0.819156051)
-        elseif MyLevel == 2400 or MyLevel <= 2424 or SelectMonter == "Candy Pirate" then
+        elseif MyLevel == 2400 or MyLevel <= 2424 or SelectMonster == "Candy Pirate" then
             Mon = "Candy Pirate"
             NameQuest = "CandyQuest1"
             QuestLv = 1
             NameMon = "Candy Pirate"
             CFrameQuest = CFrame.new(-1149.328, 13.5759039, -14445.6143, -0.156446099, 0, -0.987686574, 0, 1, 0, 0.987686574, 0, -0.156446099)
             CFrameMon = CFrame.new(-1437.56348, 17.1481285, -14385.6934, 0.173624337, -0, -0.984811902, 0, 1, -0, 0.984811902, 0, 0.173624337)
-        elseif MyLevel == 2425 or MyLevel <= 2449 or SelectMonter == "Snow Demon" then
+        elseif MyLevel == 2425 or MyLevel <= 2449 or SelectMonster == "Snow Demon" then
             Mon = "Snow Demon"
             NameQuest = "CandyQuest1"
             LevelQuest = 2
             NameMon = "Snow Demon"
             CFrameQuest = CFrame.new(-1149.328, 13.5759039, -14445.6143, -0.156446099, 0, -0.987686574, 0, 1, 0, 0.987686574, 0, -0.156446099)
             CFrameMon = CFrame.new(-916.222656, 17.1481285, -14638.8125, 0.866007268, 0, 0.500031412, 0, 1, 0, -0.500031412, 0, 0.866007268)
-        elseif MyLevel == 2450 or MyLevel <= 2474 or SelectMonter == "Isle Outlaw" then
+        elseif MyLevel == 2450 or MyLevel <= 2474 or SelectMonster == "Isle Outlaw" then
             Mon = "Isle Outlaw"
             NameQuest = "TikiQuest1"
             QuestLv = 1
             NameMon = "Isle Outlaw"
             CFrameQuest = CFrame.new(-16548.8164, 55.6059914, -172.8125, 0.213092566, -0, -0.977032006, 0, 1, -0, 0.977032006, 0, 0.213092566)
             CFrameMon = CFrame.new(-16122.4062, 10.6328173, -257.351685, -0.630029082, 0, 0.776571631, 0, 1, 0, -0.776571631, 0, -0.630029082)
-        elseif MyLevel == 2475 or MyLevel <= 2499 or SelectMonter == "Island Boy" then
+        elseif MyLevel == 2475 or MyLevel <= 2499 or SelectMonster == "Island Boy" then
             Mon = "Island Boy"
             NameQuest = "TikiQuest1"
             QuestLv = 2
             NameMon = "Island Boy"
             CFrameQ = CFrame.new(-16548.8164, 55.6059914, -172.8125, 0.213092566, -0, -0.977032006, 0, 1, -0, 0.977032006, 0, 0.213092566)
             CFrameMon = CFrame.new(-16736.2266, 20.533947, -131.718811, 0.546393692, 0, 0.837528467, 0, 1, 0, -0.837528467, 0, 0.546393692)
-        elseif MyLevel == 2500 or MyLevel <= 2524 or SelectMonter == "Sun-kissed Warrior" then
+        elseif MyLevel == 2500 or MyLevel <= 2524 or SelectMonster == "Sun-kissed Warrior" then
             Mon = "Sun-kissed Warrior"
             NameQuest = "TikiQuest2"
             QuestLv = 1
             NameMon = "Sun-"
             CFrameQ = CFrame.new(-16541.0215, 54.770813, 1051.46118, 0.0410757065, -0, -0.999156058, 0, 1, -0, 0.999156058, 0, 0.0410757065)
             CFrameMon = CFrame.new(-16413.5078, 54.6350479, 1054.43555, -0.999391913, 0, -0.034868788, 0, 1, 0, 0.034868788, 0, -0.999391913)
-        elseif MyLevel == 2525 or MyLevel <= 2549 or SelectMonter == "Isle Champion" then
+        elseif MyLevel == 2525 or MyLevel <= 2549 or SelectMonster == "Isle Champion" then
             Mon = "Isle Champion"
             NameQuest = "TikiQuest2"
             QuestLv = 2
             NameMon = "Isle Champion"
             CFrameQ = CFrame.new(-16541.0215, 54.770813, 1051.46118, 0.0410757065, -0, -0.999156058, 0, 1, -0, 0.999156058, 0, 0.0410757065)
             CFrameMon = CFrame.new(-16787.3203, 20.6350517, 992.131836, -0.775471091, 0, 0.631383121, 0, 1, 0, -0.631383121, 0, -0.775471091)
-        elseif MyLevel == 2550 or MyLevel <= 2574 or SelectMonter == "Serpent Hunter" then
+        elseif MyLevel == 2550 or MyLevel <= 2574 or SelectMonster == "Serpent Hunter" then
             Mon = "Serpent Hunter"
             NameQuest = "TikiQuest3"
             QuestLv = 1
             NameMon = "Serpent Hunter"
             CFrameQ = CFrame.new(-16665.1914, 104.596405, 1579.69434, 0.951068401, -0, -0.308980465, 0, 1, -0, 0.308980465, 0, 0.951068401)
             CFrameMon = CFrame.new(-16654.7754, 105.286232, 1579.67444, 0.999096751, 4.45934489e-08, 0.0424928814, -4.38822667e-08, 1, -1.76692847e-08, -0.0424928814, 1.57886415e-08, 0.999096751)
-        elseif MyLevelMyLevel >= 2575 or SelectMonter == "Skull Slayer" then
+        elseif MyLevelMyLevel >= 2575 or SelectMonster == "Skull Slayer" then
             Mon = "Skull Slayer"
             NameQuest = "TikiQuest3"
             QuestLv = 2
@@ -1553,11 +1553,11 @@ end
 
 --// Select Monster
 if World1 then
-    SelectMonter = {"Bandit","Monkey","Gorilla","Pirate","Brute","Desert Bandit","Desert Officer","Snow Bandit","Snowman","Chief Petty Officer","Sky Bandit","Dark Master","Prisoner", "Dangerous Prisoner","Toga Warrior","Gladiator","Military Soldier","Military Spy","Fishman Warrior","Fishman Commando","God's Guard","Shanda","Royal Squad","Royal Soldier","Galley Pirate","Galley Captain"}
+    tableMon = {"Bandit","Monkey","Gorilla","Pirate","Brute","Desert Bandit","Desert Officer","Snow Bandit","Snowman","Chief Petty Officer","Sky Bandit","Dark Master","Prisoner", "Dangerous Prisoner","Toga Warrior","Gladiator","Military Soldier","Military Spy","Fishman Warrior","Fishman Commando","God's Guard","Shanda","Royal Squad","Royal Soldier","Galley Pirate","Galley Captain"}
 elseif World2 then
-    SelectMonter = {"Raider","Mercenary","Swan Pirate","Factory","Marine Lieutenant","Marine Captain","Zombie","Vampire","Snow Trooper","Winter Warrior","Lab Subordinate","Horned Warrior","Magma Ninja","Lava Pirate","Ship Deckhand","Ship Engineer","Ship Steward","Ship Officer","Arctic Warrior","Snow Lurker","Sea Soldier","Water Fighter"}
+    tableMon = {"Raider","Mercenary","Swan Pirate","Factory","Marine Lieutenant","Marine Captain","Zombie","Vampire","Snow Trooper","Winter Warrior","Lab Subordinate","Horned Warrior","Magma Ninja","Lava Pirate","Ship Deckhand","Ship Engineer","Ship Steward","Ship Officer","Arctic Warrior","Snow Lurker","Sea Soldier","Water Fighter"}
 elseif World3 then
-    SelectMonter = {"Pirate Millionaire","Dragon Crew Warrior","Dragon Crew Archer","Female Islander","Giant Islander","Marine Commodore","Marine Rear Admiral","Fishman Raider","Fishman Captain","Forest Pirate","Mythological Pirate","Jungle Pirate","Musketeer Pirate","Reborn Skeleton","Living Zombie","Demonic Soul","Posessed Mummy", "Peanut Scout", "Peanut President", "Ice Cream Chef", "Ice Cream Commander", "Cookie Crafter", "Cake Guard", "Baking Staff", "Head Baker", "Cocoa Warrior", "Chocolate Bar Battler", "Sweet Thief", "Candy Rebel", "Candy Pirate", "Snow Demon",
+    tableMon = {"Pirate Millionaire","Dragon Crew Warrior","Dragon Crew Archer","Female Islander","Giant Islander","Marine Commodore","Marine Rear Admiral","Fishman Raider","Fishman Captain","Forest Pirate","Mythological Pirate","Jungle Pirate","Musketeer Pirate","Reborn Skeleton","Living Zombie","Demonic Soul","Posessed Mummy", "Peanut Scout", "Peanut President", "Ice Cream Chef", "Ice Cream Commander", "Cookie Crafter", "Cake Guard", "Baking Staff", "Head Baker", "Cocoa Warrior", "Chocolate Bar Battler", "Sweet Thief", "Candy Rebel", "Candy Pirate", "Snow Demon",
         "Isle Outlaw", "Island Boy", "Sun-kissed Warrior", "Isle Champion", "Serpent Hunter", "Skull Slayer"
     }
 end    
@@ -1775,20 +1775,20 @@ while wait(0.1) do
     end
 end)
 
-spawn(function()
-while wait(0) do
-    Type = 1
-    wait(0.3)
-    Type = 2
-    wait(0.3)
-    Type = 3
-    ait(0.3)
-    ype = 4
-    ait(0.3)
-    ype = 5
-    wait(0.3)
-end
-end)
+--spawn(function()
+--while wait(0) do
+    --Type = 1
+    --wait(0.3)
+    --Type = 2
+    --wait(0.3)
+    --Type = 3
+    --ait(0.3)
+    --ype = 4
+    --ait(0.3)
+    --ype = 5
+  --  wait(0.3)
+--end
+--end)
 
 spawn(function()
 game:GetService("RunService").Heartbeat:Connect(function()
@@ -2032,7 +2032,6 @@ local function ManageEnemy(v, targetPosition, bringDistance)
         and (v.HumanoidRootPart.Position - targetPosition.Position).Magnitude <= bringDistance 
     then
         -- Update Enemy Properties
-        v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
         v.HumanoidRootPart.CFrame = targetPosition
         v.Humanoid:ChangeState(Enum.HumanoidStateType.PlatformStanding)
         v.HumanoidRootPart.CanCollide = false
@@ -2053,7 +2052,7 @@ spawn(function()
         pcall(function()
             if _G.BringMonster then
                 CheckQuest()
-                local bringDistance = bringModes[_G.BringMode] or 275 -- Default to 275 if mode is undefined
+                local bringDistance = bringModes[_G.BringMode] or 350 -- Default to 275 if mode is undefined
                 
                 -- สำหรับ AutoFarm
                 if _G.AutoFarm and StartMagnet then
@@ -2106,42 +2105,7 @@ spawn(function()
 							or v.Name == "Snow Lurker"
 							or v.Name == "Sea Soldier"
 							or v.Name == "Water Fighter"
-							or v.Nmae == "Pirate Millionaire"
-							or v.Name == "Dragon Crew Warrior"
-							or v.Name == "Female Islander"
-							or v.Name == "Giant Islander"
-							or v.Name == "Marine Commodore"
-							or v.Name == "Marine Rear Admiral"
-							or v.Name == "Fishman Raider"
-							or v.Name == "Fishman Captain"
-							or v.Name == "Forest Pirate"
-							or v.Name == "Mythological Pirate"
-							or v.Name == "Jungle Pirate"
-							or v.Name == "Musketeer Pirate"
-							or v.Name == "Reborn Skeleton"
-							or v.Name == "Living Zombie"
-							or v.Name == "Demonic Soul"
-							or v.Name == "Posessed Mummy"
-							or v.Name == "Peanut Scout"
-							or v.Name == "Peanut President"
-							or v.Name == "Ice Cream Chef"
-							or v.Name == "Ice Cream Commander"
-							or v.Name == "Cookie Crafter"
-							or v.Name == "Cake Guard"
-							or v.Name == "Baking Staff"
-							or v.Name == "Head Baker"
-							or v.Name == "Cocoa Warrior"
-							or v.Name == "Chocolate Bar Battler"
-							or v.Name == "Sweet Thief"
-							or v.Name == "Candy Rebel"							
-							or v.Name == "Candy Pirate"							
-							or v.Name == "Snow Demon"							
-							or v.Name == "Isle Outlaw"							
-							or v.Name == "Island Boy"							
-							or v.Name == "Sun-kissed Warrior"							
-							or v.Name == "Isle Champion"							
-							or v.Name == "Serpent Hunter"							
-							or v.Name == "Skull Slayer") then
+							or v.Name == "Candy Rebel") then
                             ManageEnemy(v, PosMon, bringDistance)
                         end
                     end
@@ -2164,7 +2128,6 @@ spawn(function()
 end)
                         if _G.AutoBartilo and AutoBartiloBring then
                             if v.Name == "Swan Pirate" and (v.HumanoidRootPart.Position - PosMonBarto.Position).Magnitude <= 250 and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                                v.HumanoidRootPart.Size = Vector3.new(50,50,50)
                                 v.Humanoid:ChangeState(14)
                                 v.HumanoidRootPart.CanCollide = false
                                 v.Head.CanCollide = false
@@ -2375,7 +2338,6 @@ spawn(function()
                                             PosMon = v.HumanoidRootPart.CFrame
                                             TP1(v.HumanoidRootPart.CFrame * Pos)
                                             v.HumanoidRootPart.CanCollide = false
-                                            v.HumanoidRootPart.Size = Vector3.new(70,70,70)
                                             StartMagnet = true
                                         until not _G.AutoFarm or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
                                     else
