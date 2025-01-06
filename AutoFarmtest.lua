@@ -1708,6 +1708,19 @@ end
 return tweenfunc
 end
 
+local TweenService = game:GetService("TweenService")
+
+function FastTP(targetCFrame)
+    local character = game.Players.LocalPlayer.Character
+    if character and character:FindFirstChild("HumanoidRootPart") then
+        local humanoidRootPart = character.HumanoidRootPart
+        local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out) -- ใช้เวลาน้อยลง
+        local tween = TweenService:Create(humanoidRootPart, tweenInfo, {CFrame = targetCFrame})
+        tween:Play()
+        tween.Completed:Wait() -- รอจนกว่าจะเคลื่อนที่เสร็จ
+    end
+end
+
 getgenv().ToTargets = function(p)
 task.spawn(function()
     pcall(function()
@@ -2348,7 +2361,7 @@ spawn(function()
                             end
                         end
                     else
-                        TP1(CFrameMon)
+                        FastTP(CFrameMon)
                         StartMagnet = false
                         if game:GetService("ReplicatedStorage"):FindFirstChild(Mon) then
                          TP1(game:GetService("ReplicatedStorage"):FindFirstChild(Mon).HumanoidRootPart.CFrame * CFrame.new(15,10,2))
