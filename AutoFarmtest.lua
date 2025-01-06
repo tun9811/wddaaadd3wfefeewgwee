@@ -1832,7 +1832,7 @@ spawn(function()
                     local Noclip = Instance.new("BodyVelocity")
                     Noclip.Name = "BodyClip"
                     Noclip.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
-                    Noclip.MaxForce = Vector3.new(10000,10000,10000)
+                    Noclip.MaxForce = Vector3.new(100000,100000,100000)
                     Noclip.Velocity = Vector3.new(0,0,0)
                 end
             end
@@ -2361,7 +2361,6 @@ spawn(function()
                             end
                         end
                     else
-					wait(0.5)
                         FastTP(CFrameMon)
                         StartMagnet = false
                         if game:GetService("ReplicatedStorage"):FindFirstChild(Mon) then
