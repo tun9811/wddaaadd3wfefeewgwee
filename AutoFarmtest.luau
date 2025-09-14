@@ -3678,56 +3678,44 @@ do t[u]=v end e.Apply(p,t)task.defer(e.Apply,p,t)return t end return l
 -- ==============================
 -- MultiPullDownButton Component
 -- ==============================
-function ui.MultiPullDownButton(props)
+function l.MultiPullDownButton(props)
     local self = {}
     self.Options = props.Options or {}
     self.Values = props.Values or {}
     self.Label = props.Label or ""
     self.ValueChanged = props.ValueChanged or function() end
 
-    -- create base button
-    local button = ui.New("Button", {
-        Text = self.Label,
+    -- UI element ของ cascade
+    local base = l.PullDownButton({
+        Options = self.Options,
+        Label = self.Label,
+        Value = 1, -- ค่าเริ่มต้น dummy
     })
 
-    -- dropdown container
-    local dropdown = ui.New("Frame", {
-        Visible = false,
-        AutomaticSize = Enum.AutomaticSize.Y,
-    })
-    dropdown.Parent = button
+    -- แก้ behavior: ให้ toggle เก็บหลายค่า
+    base.ValueChanged = function(_, value)
+        local found = table.find(self.Values, value)
+        if found then
+            table.remove(self.Values, found)
+        else
+            table.insert(self.Values, value)
+        end
 
-    -- create option buttons
-    for i, option in ipairs(self.Options) do
-        local optBtn = ui.New("Button", {
-            Text = option,
-        })
-        optBtn.Parent = dropdown
+        -- update label
+        local texts = {}
+        for _, idx in ipairs(self.Values) do
+            table.insert(texts, self.Options[idx])
+        end
+        self.Label = table.concat(texts, ", ")
+        base.Label = self.Label
 
-        optBtn.MouseButton1Click:Connect(function()
-            local found = table.find(self.Values, i)
-            if found then
-                table.remove(self.Values, found)
-            else
-                table.insert(self.Values, i)
-            end
-
-            -- update label
-            local texts = {}
-            for _, idx in ipairs(self.Values) do
-                table.insert(texts, self.Options[idx])
-            end
-            self.Label = table.concat(texts, ", ")
-            button.Text = self.Label
-
-            self.ValueChanged(self, self.Values)
-        end)
+        self.ValueChanged(self, self.Values)
     end
 
-    button.MouseButton1Click:Connect(function()
-        dropdown.Visible = not dropdown.Visible
-    end)
+    return base
+end
 
-    self.Instance = button
-    return self
+-- แล้ว register method ให้ Row ใช้ได้
+function Row:MultiPullDownButton(props)
+    return self:Add(l.MultiPullDownButton(props))
 end
