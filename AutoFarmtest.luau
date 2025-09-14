@@ -3673,3 +3673,61 @@ x,y in pairs(w)do if typeof(y)=='table'and typeof(v[x])=='table'and not y.Value
 then u(v[x],y)elseif v[x]and y and y.Value~=nil then v[x].Value=y.Value end end
 end u(p.Theme,t)end},r,{'Theme'})t.Structures={WindowPill=s}for u,v in pairs(i)
 do t[u]=v end e.Apply(p,t)task.defer(e.Apply,p,t)return t end return l
+
+
+-- ==============================
+-- MultiPullDownButton Component
+-- ==============================
+function ui.MultiPullDownButton(props)
+    local self = {}
+    self.Options = props.Options or {}
+    self.Values = props.Values or {}
+    self.Label = props.Label or ""
+    self.ValueChanged = props.ValueChanged or function() end
+
+    -- create base button
+    local button = ui.New("Button", {
+        Text = self.Label,
+    })
+
+    -- dropdown container
+    local dropdown = ui.New("Frame", {
+        Visible = false,
+        AutomaticSize = Enum.AutomaticSize.Y,
+    })
+    dropdown.Parent = button
+
+    -- create option buttons
+    for i, option in ipairs(self.Options) do
+        local optBtn = ui.New("Button", {
+            Text = option,
+        })
+        optBtn.Parent = dropdown
+
+        optBtn.MouseButton1Click:Connect(function()
+            local found = table.find(self.Values, i)
+            if found then
+                table.remove(self.Values, found)
+            else
+                table.insert(self.Values, i)
+            end
+
+            -- update label
+            local texts = {}
+            for _, idx in ipairs(self.Values) do
+                table.insert(texts, self.Options[idx])
+            end
+            self.Label = table.concat(texts, ", ")
+            button.Text = self.Label
+
+            self.ValueChanged(self, self.Values)
+        end)
+    end
+
+    button.MouseButton1Click:Connect(function()
+        dropdown.Visible = not dropdown.Visible
+    end)
+
+    self.Instance = button
+    return self
+end
