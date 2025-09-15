@@ -3587,29 +3587,25 @@ u.Value = u.Value or {} -- เก็บ index ที่เลือก
 
 for w, x in ipairs(o.Options) do
     x.MouseButton1Click:Connect(function()
-        -- ตรวจสอบว่ามีเลือกแล้วหรือยัง
-        local exists = false
-        for i, v in ipairs(u.Value) do
-            if v == w then
-                table.remove(u.Value, i) -- ถ้ามีอยู่แล้ว ให้เอาออก (unselect)
-                exists = true
-                break
-            end
-        end
-        if not exists then
-            table.insert(u.Value, w) -- ถ้าไม่มี ให้เพิ่มเข้าตาราง (select)
+        local idx = table.find(u.Value, w)
+        if idx then
+            table.remove(u.Value, idx) -- ถ้าเลือกอยู่แล้ว → ยกเลิก
+        else
+            table.insert(u.Value, w)   -- ถ้ายังไม่ได้เลือก → เพิ่ม
         end
 
-        -- อัปเดตสีปุ่มตามการเลือก
+        -- อัปเดต UI
         for i, opt in ipairs(o.Options) do
-            if table.find(u.Value, i) then
-                opt.BackgroundTransparency = 0 -- เลือกแล้ว
-            else
-                opt.BackgroundTransparency = 1 -- ไม่เลือก
-            end
+            opt.BackgroundTransparency = table.find(u.Value, i) and 0 or 1
+        end
+
+        -- ถ้าอยากมี callback ว่า value เปลี่ยน
+        if u.OnChanged then
+            u.OnChanged(u.Value)
         end
     end)
 end
+
 end c=c or{}c.Expanded=c.Expanded or false o.
 Body=(e.Apply(c,g'TextButton'{Name='PullDownButton',AutomaticSize=Enum.
 AutomaticSize.XY,BackgroundColor3=Color3.fromRGB(255,255,255),
