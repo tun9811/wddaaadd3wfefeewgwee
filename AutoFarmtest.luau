@@ -51,7 +51,7 @@ j)g[i]=j end})end end return d end function a.e()local b=a.load'a'local c=
 function(c)return b.Clone(game:GetService(c))end return{TweenService=(c
 'TweenService'),RunService=(c'RunService'),UserInputService=(c'UserInputService'
 ),GuiService=(c'GuiService'),Workspace=(c'Workspace'),Players=(c'Players'),
-Lighting=(c'Lighting')}end function a.f()return{accessibility = 'rbxassetid://10709751939',
+Lighting=(c'Lighting')}end function a.f()return {accessibility = 'rbxassetid://10709751939',
 activity = 'rbxassetid://10709752035',
 airvent = 'rbxassetid://10709752131',
 airplay = 'rbxassetid://10709752254',
