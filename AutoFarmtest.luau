@@ -3646,22 +3646,8 @@ __instance end s()local x,y={GroupTransparency=w and 0 or 1},TweenInfo.new(w and
 0 or 0.4,Enum.EasingStyle.Exponential)local z=i:Create(o.MenuBody,y,x)z:Play()z.
 Completed:Connect(function()if u.Expanded==false then o.MenuContainer.Parent=nil
 end end)end,Label=function(v)if type(v)=='string'then o.CurrentTab.Visible=true
-o.CurrentTab.Text=v end end,Value = {} -- เก็บหลายตัวเลือก
-
-function u:AddValue(option)
-    local index = table.find(self.Value, option)
-    if not index then
-        table.insert(self.Value, option)
-        if self.ValueChanged then task.spawn(self.ValueChanged, self, self.Value) end
-    end
-end
-
-function u:RemoveValue(option)
-    local index = table.find(self.Value, option)
-    if index then
-        table.remove(self.Value, index)
-        if self.ValueChanged then task.spawn(self.ValueChanged, self, self.Value) end
-    end
+o.CurrentTab.Text=v end end,Value=function(v)
+    if c.ValueChanged then c.Value=v task.spawn(c.ValueChanged,u,v) end
 end
 }u=e.Wrap(c,v,o.Body)u.Type=
 'PullDownButton'u.Theme=b.Theme u.Structures=o u.Option=function(w,x)local y=#o.
