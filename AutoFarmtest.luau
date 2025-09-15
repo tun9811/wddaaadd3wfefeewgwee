@@ -3582,8 +3582,25 @@ then x.BackgroundTransparency=b.Theme.Controls.SelectionFocused[2].Value y.
 TextColor3=b.Theme.Controls.SelectionFocusedAccent[1].Value y.TextTransparency=b
 .Theme.Controls.SelectionFocusedAccent[2].Value else x.BackgroundTransparency=1
 y.TextColor3=b.Theme.Text.Primary[1].Value y.TextTransparency=b.Theme.Text.
-Primary[2].Value end end)x.MouseButton1Click:Connect(function()if u then u.
-Expanded=false u.Value=w end end)end c=c or{}c.Expanded=c.Expanded or false o.
+Primary[2].Value end end)
+x.MouseButton1Click:Connect(function()
+    local option = x.Name -- หรือค่าที่คุณเก็บ
+    if table.find(u.Value, option) then
+        u:RemoveValue(option)
+        -- อัปเดต UI ให้ไม่ Highlight
+        x.BackgroundColor3 = Color3.fromRGB(255,255,255)
+    else
+        u:AddValue(option)
+        -- อัปเดต UI ให้ Highlight
+        x.BackgroundColor3 = Color3.fromRGB(200,200,255)
+    end
+
+    -- อัปเดต Label ให้แสดงค่าที่เลือกทั้งหมด
+    o.CurrentTab.Text = table.concat(u.Value, ", ")
+    o.CurrentTab.Visible = #u.Value > 0
+end)
+
+end c=c or{}c.Expanded=c.Expanded or false o.
 Body=(e.Apply(c,g'TextButton'{Name='PullDownButton',AutomaticSize=Enum.
 AutomaticSize.XY,BackgroundColor3=Color3.fromRGB(255,255,255),
 BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
@@ -3629,8 +3646,24 @@ __instance end s()local x,y={GroupTransparency=w and 0 or 1},TweenInfo.new(w and
 0 or 0.4,Enum.EasingStyle.Exponential)local z=i:Create(o.MenuBody,y,x)z:Play()z.
 Completed:Connect(function()if u.Expanded==false then o.MenuContainer.Parent=nil
 end end)end,Label=function(v)if type(v)=='string'then o.CurrentTab.Visible=true
-o.CurrentTab.Text=v end end,Value=function(v)if c.ValueChanged then c.Value=v
-task.spawn(c.ValueChanged,u,v)end end}u=e.Wrap(c,v,o.Body)u.Type=
+o.CurrentTab.Text=v end end,Value = {} -- เก็บหลายตัวเลือก
+
+function u:AddValue(option)
+    local index = table.find(self.Value, option)
+    if not index then
+        table.insert(self.Value, option)
+        if self.ValueChanged then task.spawn(self.ValueChanged, self, self.Value) end
+    end
+end
+
+function u:RemoveValue(option)
+    local index = table.find(self.Value, option)
+    if index then
+        table.remove(self.Value, index)
+        if self.ValueChanged then task.spawn(self.ValueChanged, self, self.Value) end
+    end
+end
+}u=e.Wrap(c,v,o.Body)u.Type=
 'PullDownButton'u.Theme=b.Theme u.Structures=o u.Option=function(w,x)local y=#o.
 Options+1 t(u,x,y)table.insert(u.Options,x)return o.Options[y]end u.Remove=
 function(w,x)if x and o.Options[x]then o.Options[x]:Destroy()u.Options[x]=nil
