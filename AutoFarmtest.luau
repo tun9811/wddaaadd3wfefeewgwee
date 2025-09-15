@@ -4671,231 +4671,107 @@ Expanded=false u.Value=w end
  end
 )end
  c=c or{}c.Expanded=c.Expanded or false o.
--- Multi-Select PullDownButton
-
--- สร้าง PullDownButton
-local Body = e.Apply(c, g'TextButton'{
-    Name = 'PullDownButton',
-    AutomaticSize = Enum.AutomaticSize.XY,
-    BackgroundColor3 = Color3.fromRGB(255, 255, 255),
-    BackgroundTransparency = 1,
-    BorderColor3 = Color3.fromRGB(0,0,0),
-    BorderSizePixel = 0,
-    Selectable = false,
-    Text = '',
-    Parent = m,
-    g'UIPadding'{
-        Name = 'UIPadding',
-        PaddingBottom = UDim.new(0,3),
-        PaddingLeft = UDim.new(0,7),
-        PaddingRight = UDim.new(0,3),
-        PaddingTop = UDim.new(0,3)
-    },
-    g'UIListLayout'{
-        Name = 'UIListLayout',
-        FillDirection = Enum.FillDirection.Horizontal,
-        Padding = UDim.new(0,7),
-        SortOrder = Enum.SortOrder.LayoutOrder,
-        VerticalAlignment = Enum.VerticalAlignment.Center
-    },
-    g'Frame'{
-        Name = 'PullDownIndicator',
-        BorderColor3 = Color3.fromRGB(0,0,0),
-        BorderSizePixel = 0,
-        LayoutOrder = 1,
-        Selectable = true,
-        Size = UDim2.fromOffset(16,16),
-        __dynamicKeys = {
-            BackgroundColor3 = n.IndicatorBackground[1],
-            BackgroundTransparency = n.IndicatorBackground[2]
-        },
-        g'UICorner'{Name='UICorner', CornerRadius=UDim.new(0,4)},
-        g'ImageLabel'{
-            Name = 'Indicators',
-            BackgroundColor3 = Color3.fromRGB(255,255,255),
-            BackgroundTransparency = 1,
-            BorderColor3 = Color3.fromRGB(0,0,0),
-            BorderSizePixel = 0,
-            Image = 'rbxassetid://86693411280110',
-            Size = UDim2.fromScale(1,1),
-            __dynamicKeys = {
-                ImageColor3 = b.Theme.Text.Primary[1],
-                ImageTransparency = b.Theme.Text.Primary[2]
-            }
-        }
-    },
-    g'TextLabel'{
-        Name = 'Label',
-        AutomaticSize = Enum.AutomaticSize.XY,
-        BackgroundColor3 = Color3.fromRGB(255,255,255),
-        BackgroundTransparency = 1,
-        BorderColor3 = Color3.fromRGB(0,0,0),
-        BorderSizePixel = 0,
-        FontFace = Font.new'rbxassetid://12187365364',
-        RichText = true,
-        TextSize = 15,
-        TextTransparency = 0.15,
-        TextTruncate = Enum.TextTruncate.AtEnd,
-        Visible = false,
-        __dynamicKeys = {
-            TextColor3 = b.Theme.Text.Primary[1],
-            TextTransparency = b.Theme.Text.Primary[2]
-        }
-    }
-})
-
--- References
-o.PullDownIndicator = Body:FindFirstChild'PullDownIndicator'
-o.CurrentTab = Body:FindFirstChild'Label'
-
--- สร้างเมนู
-o.MenuContainer = g'ScreenGui'{
-    Name='Container',
-    IgnoreGuiInset=true,
-    ScreenInsets=Enum.ScreenInsets.None,
-    ZIndexBehavior=Enum.ZIndexBehavior.Sibling,
-    DisplayOrder=201,
-    OnTopOfCoreBlur=true,
-    g'CanvasGroup'{
-        Name='MenuBody',
-        BorderColor3=Color3.fromRGB(0,0,0),
-        BorderSizePixel=0,
-        BackgroundTransparency=1,
-        Size=UDim2.fromScale(1,1),
-        g'ScrollingFrame'{
-            Name='PullDownMenu',
-            AutomaticSize=Enum.AutomaticSize.XY,
-            BorderColor3=Color3.fromRGB(0,0,0),
-            BorderSizePixel=0,
-            AutomaticCanvasSize=Enum.AutomaticSize.Y,
-            CanvasSize=UDim2.new(),
-            ScrollBarImageColor3=Color3.fromRGB(0,0,0),
-            ScrollBarImageTransparency=0.5,
-            ScrollBarThickness=3,
-            __dynamicKeys = {
-                BackgroundColor3 = n.MenuBackground[1],
-                BackgroundTransparency = n.MenuBackground[2]
-            },
-            g'UICorner'{Name='UICorner', CornerRadius=UDim.new(0,6)},
-            g'UIStroke'{Name='UIStroke', ApplyStrokeMode=Enum.ApplyStrokeMode.Border, Transparency=0.9},
-            g'UIPadding'{Name='UIPadding', PaddingBottom=UDim.new(0,5), PaddingLeft=UDim.new(0,5), PaddingRight=UDim.new(0,5), PaddingTop=UDim.new(0,5)},
-            g'UIListLayout'{Name='UIListLayout', SortOrder=Enum.SortOrder.LayoutOrder, Padding=UDim.new(0,1)}
-        }
-    }
-}
-
-o.MenuBody = o.MenuContainer:FindFirstChild'MenuBody'
-o.Menu = o.MenuBody:FindFirstChild'PullDownMenu'
-
--- สร้าง PullDownButton object
-local u
-local v = {
-    Options = function(_, options)
-        for _, x in ipairs(o.Options) do
-            x:Destroy()
-        end
-        for i, x in ipairs(options) do
-            t(u, x, i)
-        end
-    end,
-    Expanded = function(_, value)
-        local expanded = value == true
-        if expanded then
-            o.MenuContainer.Parent = o.Body.__instance
-        end
-        s()
-        local tweenProps = {GroupTransparency = expanded and 0 or 1}
-        local tween = i:Create(o.MenuBody, TweenInfo.new(expanded and 0 or 0.4, Enum.EasingStyle.Exponential), tweenProps)
-        tween:Play()
-        tween.Completed:Connect(function()
-            if u.Expanded == false then
-                o.MenuContainer.Parent = nil
-            end
-        end)
-    end,
-    Label = function(_, value)
-        if type(value) == 'string' then
-            o.CurrentTab.Visible = true
-            o.CurrentTab.Text = value
-        end
-    end,
-    Value = function(_, optionName)
-        -- Multi-select logic
-        local found = false
-        for i, v in ipairs(u.SelectedOptions) do
-            if v == optionName then
-                table.remove(u.SelectedOptions, i)
-                found = true
-                break
-            end
-        end
-        if not found then
-            table.insert(u.SelectedOptions, optionName)
-        end
-
-        -- Callback
-        if c.ValueChanged then
-            task.spawn(c.ValueChanged, u, u.SelectedOptions)
-        end
-
-        -- Update Label
-        if #u.SelectedOptions > 0 then
-            o.CurrentTab.Visible = true
-            o.CurrentTab.Text = table.concat(u.SelectedOptions, ", ")
-        else
-            o.CurrentTab.Visible = false
-        end
-    end
-}
-
-u = e.Wrap(c, v, o.Body)
-u.Type = 'PullDownButton'
-u.Theme = b.Theme
-u.Structures = o
-u.Options = {}
-u.SelectedOptions = {}
-
--- เพิ่ม option
-u.Option = function(_, optionName)
-    local index = #o.Options + 1
-    t(u, optionName, index)
-    table.insert(u.Options, optionName)
-    return o.Options[index]
+Body=(e.Apply(c,g'TextButton'{Name='PullDownButton',AutomaticSize=Enum.
+AutomaticSize.XY,BackgroundColor3=Color3.fromRGB(255,255,255),
+BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
+Selectable=false,Text='',Parent=m,g'UIPadding'{Name='UIPadding',PaddingBottom=
+UDim.new(0,3),PaddingLeft=UDim.new(0,7),PaddingRight=UDim.new(0,3),PaddingTop=
+UDim.new(0,3)},g'UIListLayout'{Name='UIListLayout',FillDirection=Enum.
+FillDirection.Horizontal,Padding=UDim.new(0,7),SortOrder=Enum.SortOrder.
+LayoutOrder,VerticalAlignment=Enum.VerticalAlignment.Center},g'Frame'{Name=
+'PullDownIndicator',BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
+LayoutOrder=1,Selectable=true,Size=UDim2.fromOffset(16,16),__dynamicKeys={
+BackgroundColor3=n.IndicatorBackground[1],BackgroundTransparency=n.
+IndicatorBackground[2]},g'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,4)},
+g'ImageLabel'{Name='Indicators',BackgroundColor3=Color3.fromRGB(255,255,255),
+BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
+Image='rbxassetid://86693411280110',Size=UDim2.fromScale(1,1),__dynamicKeys={
+ImageColor3=b.Theme.Text.Primary[1],ImageTransparency=b.Theme.Text.Primary[2]}}}
+,g'TextLabel'{Name='Label',AutomaticSize=Enum.AutomaticSize.XY,BackgroundColor3=
+Color3.fromRGB(255,255,255),BackgroundTransparency=1,BorderColor3=Color3.
+fromRGB(0,0,0),BorderSizePixel=0,FontFace=Font.new'rbxassetid://12187365364',
+RichText=true,TextSize=15,TextTransparency=0.15,TextTruncate=Enum.TextTruncate.
+AtEnd,Visible=false,__dynamicKeys={TextColor3=b.Theme.Text.Primary[1],
+TextTransparency=b.Theme.Text.Primary[2]}}}))o.PullDownIndicator=(o.Body:
+FindFirstChild'PullDownIndicator')o.CurrentTab=(o.Body:FindFirstChild'Label')o.
+MenuContainer=(g'ScreenGui'{Name='Container',IgnoreGuiInset=true,ScreenInsets=
+Enum.ScreenInsets.None,ZIndexBehavior=Enum.ZIndexBehavior.Sibling,DisplayOrder=
+201,OnTopOfCoreBlur=true,g'CanvasGroup'{Name='MenuBody',BorderColor3=Color3.
+fromRGB(0,0,0),BorderSizePixel=0,BackgroundTransparency=1,Size=UDim2.fromScale(1
+,1),g'ScrollingFrame'{Name='PullDownMenu',AutomaticSize=Enum.AutomaticSize.XY,
+BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,AutomaticCanvasSize=Enum.
+AutomaticSize.Y,CanvasSize=UDim2.new(),ScrollBarImageColor3=Color3.fromRGB(0,0,0
+),ScrollBarImageTransparency=0.5,ScrollBarThickness=3,__dynamicKeys={
+BackgroundColor3=n.MenuBackground[1],BackgroundTransparency=n.MenuBackground[2]}
+,g'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,6)},g'UIStroke'{Name=
+'UIStroke',ApplyStrokeMode=Enum.ApplyStrokeMode.Border,Transparency=0.9},g
+'UIPadding'{Name='UIPadding',PaddingBottom=UDim.new(0,5),PaddingLeft=UDim.new(0,
+5),PaddingRight=UDim.new(0,5),PaddingTop=UDim.new(0,5)},g'UIListLayout'{Name=
+'UIListLayout',SortOrder=Enum.SortOrder.LayoutOrder,Padding=UDim.new(0,1)}}}})o.
+MenuBody=(o.MenuContainer:FindFirstChild'MenuBody')o.Menu=(o.MenuBody:
+FindFirstChild'PullDownMenu')
+local u 
+local v={Options=function(v)
+for w,x in
+ipairs(o.Options)do 
+x:Destroy()end
+for w,x in ipairs(v)do 
+t(u,x,w)end
+ end
+,
+Expanded=function(v)
+local w=v==true 
+if w then
+ o.MenuContainer.Parent=o.Body.
+__instance end
+ s()
+local x,y={GroupTransparency=w and 0 or 1},TweenInfo.new(w and
+0 or 0.4,Enum.EasingStyle.Exponential)
+local z=i:Create(o.MenuBody,y,x)z:Play()z.
+Completed:Connect(function()
+if u.Expanded==false then
+ o.MenuContainer.Parent=nil
 end
-
--- ลบ option
-u.Remove = function(_, index)
-    if index and o.Options[index] then
-        o.Options[index]:Destroy()
-        u.Options[index] = nil
-    end
+ end
+)end
+,Label=function(v)
+if type(v)=='string'then
+ o.CurrentTab.Visible=true
+o.CurrentTab.Text=v end
+ end
+,Value=function(v)
+if c.ValueChanged then
+ c.Value=v
+task.spawn(c.ValueChanged,u,v)end
+ end
+}u=e.Wrap(c,v,o.Body)u.Type=
+'PullDownButton'u.Theme=b.Theme u.Structures=o u.Option=function(w,x)
+local y=#o.
+Options+1 t(u,x,y)table.insert(u.Options,x)return  o.Options[y]end
+ u.Remove=
+function(w,x)
+if x and o.Options[x]then
+ o.Options[x]:Destroy()u.Options[x]=nil
 end
-
--- Events & connections
-e.Apply(c, u)
-o.Body:GetPropertyChangedSignal'AbsolutePosition':Connect(s)
-o.Body:GetPropertyChangedSignal'AbsoluteSize':Connect(s)
-o.Menu:GetPropertyChangedSignal'AbsoluteSize':Connect(s)
-
-h.InputBegan:Connect(function(input)
-    if u.Expanded and (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
-        local mousePos = h:GetMouseLocation()
-        local guiInset = k:GetGuiInset()
-        local menuPos = o.Menu.AbsolutePosition
-        local menuSize = o.Menu.AbsoluteSize
-        local relativeY = mousePos.Y - guiInset.Y
-        if mousePos.X < menuPos.X or mousePos.X > menuPos.X + menuSize.X or relativeY < menuPos.Y or relativeY > menuPos.Y + menuSize.Y then
-            u.Expanded = false
-        end
-    end
-end)
-
-o.Body.MouseButton1Click:Connect(function()
-    u.Expanded = not u.Expanded
-end)
-
-return u
-
+ end
+ e.Apply(c,u)o.Body:GetPropertyChangedSignal'AbsolutePosition':Connect(s)
+o.Body:GetPropertyChangedSignal'AbsoluteSize':Connect(s)o.Menu:
+GetPropertyChangedSignal'AbsoluteSize':Connect(s)h.InputBegan:Connect(function(w
+)
+if u.Expanded and(w.UserInputType==Enum.UserInputType.MouseButton1 or w.
+UserInputType==Enum.UserInputType.Touch)then
+local x,y,z=h:GetMouseLocation(),k:
+GetGuiInset(),o.Menu 
+local A,B,C=z.AbsolutePosition,z.AbsoluteSize,x.Y-y.Y 
+if x.
+X<A.X or x.X>A.X+B.X or C<A.Y or C>A.Y+B.Y then
+ u.Expanded=false end
+ end
+ end
+)o.
+Body.MouseButton1Click:Connect(function()
+u.Expanded=not u.Expanded end
+)return  u
 end
  end
  function a.J()
