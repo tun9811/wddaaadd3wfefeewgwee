@@ -3583,6 +3583,24 @@ TextColor3=b.Theme.Controls.SelectionFocusedAccent[1].Value y.TextTransparency=b
 .Theme.Controls.SelectionFocusedAccent[2].Value else x.BackgroundTransparency=1
 y.TextColor3=b.Theme.Text.Primary[1].Value y.TextTransparency=b.Theme.Text.
 Primary[2].Value end end)
+Value = {} -- เก็บหลายตัวเลือก
+
+function u:AddValue(option)
+    local index = table.find(self.Value, option)
+    if not index then
+        table.insert(self.Value, option)
+        if self.ValueChanged then task.spawn(self.ValueChanged, self, self.Value) end
+    end
+end
+
+function u:RemoveValue(option)
+    local index = table.find(self.Value, option)
+    if index then
+        table.remove(self.Value, index)
+        if self.ValueChanged then task.spawn(self.ValueChanged, self, self.Value) end
+    end
+end
+
 x.MouseButton1Click:Connect(function()
     local option = x.Name -- หรือค่าที่คุณเก็บ
     if table.find(u.Value, option) then
