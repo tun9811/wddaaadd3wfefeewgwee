@@ -3586,10 +3586,11 @@ Primary[2].Value end end)
 Value = {} -- เก็บหลายตัวเลือก
 
 function u:AddValue(option)
-    local index = table.find(self.Value, option)
-    if not index then
+    if not table.find(self.Value, option) then
         table.insert(self.Value, option)
-        if self.ValueChanged then task.spawn(self.ValueChanged, self, self.Value) end
+        if self.ValueChanged then
+            task.spawn(self.ValueChanged, self, self.Value)
+        end
     end
 end
 
@@ -3597,9 +3598,12 @@ function u:RemoveValue(option)
     local index = table.find(self.Value, option)
     if index then
         table.remove(self.Value, index)
-        if self.ValueChanged then task.spawn(self.ValueChanged, self, self.Value) end
+        if self.ValueChanged then
+            task.spawn(self.ValueChanged, self, self.Value)
+        end
     end
 end
+
 local function UpdateOptionUI()
     for _, optionButton in ipairs(o.Options) do
         -- ใช้ optionButton.Text เป็นค่าจริง
