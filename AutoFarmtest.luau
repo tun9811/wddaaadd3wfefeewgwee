@@ -3582,8 +3582,40 @@ then x.BackgroundTransparency=b.Theme.Controls.SelectionFocused[2].Value y.
 TextColor3=b.Theme.Controls.SelectionFocusedAccent[1].Value y.TextTransparency=b
 .Theme.Controls.SelectionFocusedAccent[2].Value else x.BackgroundTransparency=1
 y.TextColor3=b.Theme.Text.Primary[1].Value y.TextTransparency=b.Theme.Text.
-Primary[2].Value end end)x.MouseButton1Click:Connect(function()if u then u.
-Expanded=false u.Value=w end end)end c=c or{}c.Expanded=c.Expanded or false o.
+Primary[2].Value end end)-- กำหนดค่าเริ่มต้นเป็นตาราง
+u.Value = u.Value or {}
+
+x.MouseButton1Click:Connect(function()
+    if u then
+        local exists = false
+        -- ตรวจสอบว่าค่า w มีอยู่ใน Value หรือยัง
+        for i, val in ipairs(u.Value) do
+            if val == w then
+                table.remove(u.Value, i) -- ลบค่าออกถ้ามีอยู่แล้ว
+                exists = true
+                break
+            end
+        end
+        -- ถ้าไม่มีอยู่ก็เพิ่มค่าใหม่
+        if not exists then
+            table.insert(u.Value, w)
+        end
+        
+        -- อัปเดต UI ของ Label
+        if #u.Value > 0 then
+            local labels = {}
+            for _, val in ipairs(u.Value) do
+                table.insert(labels, o.Options[val].Label.Text)
+            end
+            o.CurrentTab.Text = table.concat(labels, ", ")
+            o.CurrentTab.Visible = true
+        else
+            o.CurrentTab.Text = ""
+            o.CurrentTab.Visible = false
+        end
+    end
+end)
+end c=c or{}c.Expanded=c.Expanded or false o.
 Body=(e.Apply(c,g'TextButton'{Name='PullDownButton',AutomaticSize=Enum.
 AutomaticSize.XY,BackgroundColor3=Color3.fromRGB(255,255,255),
 BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
