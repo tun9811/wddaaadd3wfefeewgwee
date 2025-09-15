@@ -3583,28 +3583,64 @@ TextColor3=b.Theme.Controls.SelectionFocusedAccent[1].Value y.TextTransparency=b
 .Theme.Controls.SelectionFocusedAccent[2].Value else x.BackgroundTransparency=1
 y.TextColor3=b.Theme.Text.Primary[1].Value y.TextTransparency=b.Theme.Text.
 Primary[2].Value end end)-- สมมติ u คือ dropdown object และ o.Options เป็นตารางเก็บปุ่ม
-u.Value = u.Value or {} -- เก็บ index ที่เลือก
+u.Value = u.Value or {}
+
+local function UpdateUI()
+    local selectedTexts = {}
+    for i, opt in ipairs(o.Options) do
+        if table.find(u.Value, i) then
+            opt.BackgroundTransparency = 0.2
+            if opt:FindFirstChild("Checkmark") then
+                opt.Checkmark.Visible = true
+            end
+            table.insert(selectedTexts, opt.Text)
+        else
+            opt.BackgroundTransparency = 1
+            if opt:FindFirstChild("Checkmark") then
+                opt.Checkmark.Visible = false
+            end
+        end
+    end
+
+    -- แสดงผลรวมของที่เลือก (เช่น "Apple, Banana")
+    if #selectedTexts > 0 then
+        u.Label.Text = table.concat(selectedTexts, ", ")
+    else
+        u.Label.Text = "เลือก..."
+    end
+end
 
 for w, x in ipairs(o.Options) do
+    -- เพิ่ม Checkmark ไว้ในแต่ละ option (UI icon)
+    local check = Instance.new("TextLabel")
+    check.Name = "Checkmark"
+    check.Text = "✓"
+    check.Size = UDim2.new(0, 20, 1, 0)
+    check.Position = UDim2.new(1, -25, 0, 0)
+    check.BackgroundTransparency = 1
+    check.TextColor3 = Color3.fromRGB(0, 200, 0)
+    check.Visible = false
+    check.Parent = x
+
     x.MouseButton1Click:Connect(function()
         local idx = table.find(u.Value, w)
         if idx then
-            table.remove(u.Value, idx) -- ถ้าเลือกอยู่แล้ว → ยกเลิก
+            table.remove(u.Value, idx)
         else
-            table.insert(u.Value, w)   -- ถ้ายังไม่ได้เลือก → เพิ่ม
+            table.insert(u.Value, w)
         end
 
-        -- อัปเดต UI
-        for i, opt in ipairs(o.Options) do
-            opt.BackgroundTransparency = table.find(u.Value, i) and 0 or 1
-        end
+        UpdateUI()
 
-        -- ถ้าอยากมี callback ว่า value เปลี่ยน
         if u.OnChanged then
             u.OnChanged(u.Value)
         end
     end)
 end
+
+-- init
+UpdateUI()
+
 
 end c=c or{}c.Expanded=c.Expanded or false o.
 Body=(e.Apply(c,g'TextButton'{Name='PullDownButton',AutomaticSize=Enum.
