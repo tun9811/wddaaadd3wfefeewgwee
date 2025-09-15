@@ -3602,27 +3602,38 @@ function u:RemoveValue(option)
 end
 local function UpdateOptionUI()
     for _, optionButton in ipairs(o.Options) do
-        if table.find(u.Value, optionButton.OptionValue) then
-            optionButton.BackgroundColor3 = Color3.fromRGB(200,200,255)
+        -- ใช้ optionButton.Text เป็นค่าจริง
+        if table.find(u.Value, optionButton.Text) then
+            optionButton.BackgroundColor3 = Color3.fromRGB(200,200,255) -- เลือกแล้ว
         else
-            optionButton.BackgroundColor3 = Color3.fromRGB(255,255,255)
+            optionButton.BackgroundColor3 = Color3.fromRGB(255,255,255) -- ไม่เลือก
         end
     end
 
+    -- อัปเดต Label ของ PullDownButton
     o.CurrentTab.Text = table.concat(u.Value, ", ")
     o.CurrentTab.Visible = #u.Value > 0
 end
 
-x.MouseButton1Click:Connect(function()
-    local option = x.OptionValue
-    if table.find(u.Value, option) then
-        u:RemoveValue(option)
-    else
-        u:AddValue(option)
-    end
-    UpdateOptionUI()
-end)
-
+-- Event ของแต่ละ Option
+for _, optionButton in ipairs(o.Options) do
+    optionButton.MouseButton1Click:Connect(function()
+        local optionText = optionButton.Text  -- ใช้ Text เป็นค่าจริง
+        if table.find(u.Value, optionText) then
+            -- ลบค่าที่เลือกออก
+            for i,v in ipairs(u.Value) do
+                if v == optionText then
+                    table.remove(u.Value, i)
+                    break
+                end
+            end
+        else
+            -- เพิ่มค่าที่เลือก
+            table.insert(u.Value, optionText)
+        end
+        UpdateOptionUI()
+    end)
+end
 
 end c=c or{}c.Expanded=c.Expanded or false o.
 Body=(e.Apply(c,g'TextButton'{Name='PullDownButton',AutomaticSize=Enum.
