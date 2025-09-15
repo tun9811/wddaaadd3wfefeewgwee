@@ -3600,23 +3600,29 @@ function u:RemoveValue(option)
         if self.ValueChanged then task.spawn(self.ValueChanged, self, self.Value) end
     end
 end
-
-x.MouseButton1Click:Connect(function()
-    local option = x.Name -- หรือค่าที่คุณเก็บ
-    if table.find(u.Value, option) then
-        u:RemoveValue(option)
-        -- อัปเดต UI ให้ไม่ Highlight
-        x.BackgroundColor3 = Color3.fromRGB(255,255,255)
-    else
-        u:AddValue(option)
-        -- อัปเดต UI ให้ Highlight
-        x.BackgroundColor3 = Color3.fromRGB(200,200,255)
+local function UpdateOptionUI()
+    for _, optionButton in ipairs(o.Options) do
+        if table.find(u.Value, optionButton.OptionValue) then
+            optionButton.BackgroundColor3 = Color3.fromRGB(200,200,255)
+        else
+            optionButton.BackgroundColor3 = Color3.fromRGB(255,255,255)
+        end
     end
 
-    -- อัปเดต Label ให้แสดงค่าที่เลือกทั้งหมด
     o.CurrentTab.Text = table.concat(u.Value, ", ")
     o.CurrentTab.Visible = #u.Value > 0
+end
+
+x.MouseButton1Click:Connect(function()
+    local option = x.OptionValue
+    if table.find(u.Value, option) then
+        u:RemoveValue(option)
+    else
+        u:AddValue(option)
+    end
+    UpdateOptionUI()
 end)
+
 
 end c=c or{}c.Expanded=c.Expanded or false o.
 Body=(e.Apply(c,g'TextButton'{Name='PullDownButton',AutomaticSize=Enum.
