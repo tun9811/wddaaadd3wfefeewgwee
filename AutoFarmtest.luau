@@ -3588,20 +3588,17 @@ u.Value = u.Value or {}
 x.MouseButton1Click:Connect(function()
     if u then
         local exists = false
-        -- ตรวจสอบว่าค่า w มีอยู่ใน Value หรือยัง
         for i, val in ipairs(u.Value) do
             if val == w then
-                table.remove(u.Value, i) -- ลบค่าออกถ้ามีอยู่แล้ว
+                table.remove(u.Value, i)
                 exists = true
                 break
             end
         end
-        -- ถ้าไม่มีอยู่ก็เพิ่มค่าใหม่
         if not exists then
             table.insert(u.Value, w)
         end
-        
-        -- อัปเดต UI ของ Label
+
         if #u.Value > 0 then
             local labels = {}
             for _, val in ipairs(u.Value) do
@@ -3615,6 +3612,7 @@ x.MouseButton1Click:Connect(function()
         end
     end
 end)
+
 end c=c or{}c.Expanded=c.Expanded or false o.
 Body=(e.Apply(c,g'TextButton'{Name='PullDownButton',AutomaticSize=Enum.
 AutomaticSize.XY,BackgroundColor3=Color3.fromRGB(255,255,255),
