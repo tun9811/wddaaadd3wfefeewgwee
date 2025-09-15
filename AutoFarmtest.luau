@@ -3586,32 +3586,41 @@ Primary[2].Value end end)-- กำหนดค่าเริ่มต้นเ�
 u.Value = u.Value or {}
 
 x.MouseButton1Click:Connect(function()
-    if u then
-        local exists = false
-        for i, val in ipairs(u.Value) do
-            if val == w then
-                table.remove(u.Value, i)
-                exists = true
-                break
-            end
-        end
-        if not exists then
-            table.insert(u.Value, w)
-        end
+    local selectedIndex = w  -- กำหนดค่า index ของ option นี้, เช่นตัวแปร w หรือ i
+    -- สร้างตารางเก็บค่าที่เลือกถ้ายังไม่มี
+    u.Value = u.Value or {}
 
-        if #u.Value > 0 then
-            local labels = {}
-            for _, val in ipairs(u.Value) do
-                table.insert(labels, o.Options[val].Label.Text)
-            end
-            o.CurrentTab.Text = table.concat(labels, ", ")
-            o.CurrentTab.Visible = true
-        else
-            o.CurrentTab.Text = ""
-            o.CurrentTab.Visible = false
+    local exists = false
+    for i, v in ipairs(u.Value) do
+        if v == selectedIndex then
+            table.remove(u.Value, i)
+            exists = true
+            break
+        end
+    end
+    if not exists then
+        table.insert(u.Value, selectedIndex)
+    end
+
+    -- อัปเดตข้อความ Label
+    if #u.Value > 0 then
+        local labels = {}
+        for _, v in ipairs(u.Value) do
+            table.insert(labels, o.Options[v].Label.Text)
+        end
+        o.CurrentTab.Text = table.concat(labels, ", ")
+    else
+        o.CurrentTab.Text = "None"
+    end
+
+    -- อัปเดต Checkmark ของแต่ละ Option
+    for i, option in ipairs(o.Options) do
+        if option:FindFirstChild("Checkmark") then
+            option.Checkmark.Visible = table.find(u.Value, i) ~= nil
         end
     end
 end)
+
 
 end c=c or{}c.Expanded=c.Expanded or false o.
 Body=(e.Apply(c,g'TextButton'{Name='PullDownButton',AutomaticSize=Enum.
