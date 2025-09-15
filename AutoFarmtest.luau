@@ -3582,46 +3582,34 @@ then x.BackgroundTransparency=b.Theme.Controls.SelectionFocused[2].Value y.
 TextColor3=b.Theme.Controls.SelectionFocusedAccent[1].Value y.TextTransparency=b
 .Theme.Controls.SelectionFocusedAccent[2].Value else x.BackgroundTransparency=1
 y.TextColor3=b.Theme.Text.Primary[1].Value y.TextTransparency=b.Theme.Text.
-Primary[2].Value end end)-- กำหนดค่าเริ่มต้นเป็นตาราง
-u.Value = u.Value or {}
+Primary[2].Value end end)-- สมมติ u คือ dropdown object และ o.Options เป็นตารางเก็บปุ่ม
+u.Value = u.Value or {} -- เก็บ index ที่เลือก
 
-x.MouseButton1Click:Connect(function()
-    local selectedIndex = w  -- กำหนดค่า index ของ option นี้, เช่นตัวแปร w หรือ i
-    -- สร้างตารางเก็บค่าที่เลือกถ้ายังไม่มี
-    u.Value = u.Value or {}
-
-    local exists = false
-    for i, v in ipairs(u.Value) do
-        if v == selectedIndex then
-            table.remove(u.Value, i)
-            exists = true
-            break
+for w, x in ipairs(o.Options) do
+    x.MouseButton1Click:Connect(function()
+        -- ตรวจสอบว่ามีเลือกแล้วหรือยัง
+        local exists = false
+        for i, v in ipairs(u.Value) do
+            if v == w then
+                table.remove(u.Value, i) -- ถ้ามีอยู่แล้ว ให้เอาออก (unselect)
+                exists = true
+                break
+            end
         end
-    end
-    if not exists then
-        table.insert(u.Value, selectedIndex)
-    end
-
-    -- อัปเดตข้อความ Label
-    if #u.Value > 0 then
-        local labels = {}
-        for _, v in ipairs(u.Value) do
-            table.insert(labels, o.Options[v].Label.Text)
+        if not exists then
+            table.insert(u.Value, w) -- ถ้าไม่มี ให้เพิ่มเข้าตาราง (select)
         end
-        o.CurrentTab.Text = table.concat(labels, ", ")
-    else
-        o.CurrentTab.Text = "None"
-    end
 
-    -- อัปเดต Checkmark ของแต่ละ Option
-    for i, option in ipairs(o.Options) do
-        if option:FindFirstChild("Checkmark") then
-            option.Checkmark.Visible = table.find(u.Value, i) ~= nil
+        -- อัปเดตสีปุ่มตามการเลือก
+        for i, opt in ipairs(o.Options) do
+            if table.find(u.Value, i) then
+                opt.BackgroundTransparency = 0 -- เลือกแล้ว
+            else
+                opt.BackgroundTransparency = 1 -- ไม่เลือก
+            end
         end
-    end
-end)
-
-
+    end)
+end
 end c=c or{}c.Expanded=c.Expanded or false o.
 Body=(e.Apply(c,g'TextButton'{Name='PullDownButton',AutomaticSize=Enum.
 AutomaticSize.XY,BackgroundColor3=Color3.fromRGB(255,255,255),
