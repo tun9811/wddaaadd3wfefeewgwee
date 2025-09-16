@@ -3582,8 +3582,34 @@ then x.BackgroundTransparency=b.Theme.Controls.SelectionFocused[2].Value y.
 TextColor3=b.Theme.Controls.SelectionFocusedAccent[1].Value y.TextTransparency=b
 .Theme.Controls.SelectionFocusedAccent[2].Value else x.BackgroundTransparency=1
 y.TextColor3=b.Theme.Text.Primary[1].Value y.TextTransparency=b.Theme.Text.
-Primary[2].Value end end)x.MouseButton1Click:Connect(function()if u then u.
-Expanded=false u.Value=w end end)end c=c or{}c.Expanded=c.Expanded or false o.
+Primary[2].Value end end)x.MouseButton1Click:Connect(function()
+    u.Value = u.Value or {}
+    local exists = table.find(u.Value, w)
+    if exists then
+        table.remove(u.Value, exists)
+    else
+        table.insert(u.Value, w)
+    end
+    spawn(function()
+        while task.wait() do
+            if game:GetService("CoreGui").HiddenUI:FindFirstChild("Cascade") then
+                pcall(function()
+                    for i, opt in ipairs(o.Options) do
+                        if table.find(u.Value, i) then
+                            opt.BackgroundTransparency = 0
+                        else
+                            opt.BackgroundTransparency = 1
+                        end
+                    end
+                end)
+            end
+        end
+    end)
+    if u.ValueChanged then
+        task.spawn(u.ValueChanged, u, u.Value)
+    end
+end)
+end c=c or{}c.Expanded=c.Expanded or false o.
 Body=(e.Apply(c,g'TextButton'{Name='PullDownButton',AutomaticSize=Enum.
 AutomaticSize.XY,BackgroundColor3=Color3.fromRGB(255,255,255),
 BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
