@@ -3592,8 +3592,8 @@ Primary[2].Value end end)x.MouseButton1Click:Connect(function()
     end
     spawn(function()
         while task.wait() do
-            if game:GetService("CoreGui").HiddenUI:FindFirstChild("Cascade") then
-                pcall(function()
+            pcall(function()
+                if game:GetService("CoreGui").HiddenUI:FindFirstChild("Cascade") then
                     for i, opt in ipairs(o.Options) do
                         if table.find(u.Value, i) then
                             opt.BackgroundTransparency = 0
@@ -3601,8 +3601,8 @@ Primary[2].Value end end)x.MouseButton1Click:Connect(function()
                             opt.BackgroundTransparency = 1
                         end
                     end
-                end)
-            end
+                end
+            end)
         end
     end)
     if u.ValueChanged then
