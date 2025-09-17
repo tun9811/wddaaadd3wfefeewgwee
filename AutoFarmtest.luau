@@ -3582,14 +3582,8 @@ then x.BackgroundTransparency=b.Theme.Controls.SelectionFocused[2].Value y.
 TextColor3=b.Theme.Controls.SelectionFocusedAccent[1].Value y.TextTransparency=b
 .Theme.Controls.SelectionFocusedAccent[2].Value else x.BackgroundTransparency=1
 y.TextColor3=b.Theme.Text.Primary[1].Value y.TextTransparency=b.Theme.Text.
-Primary[2].Value end end)x.MouseButton1Click:Connect(function()
-    u.Value = u.Value or {}
-    local exists = table.find(u.Value, w)
-    if exists then
-        table.remove(u.Value, exists)
-    else
-        table.insert(u.Value, w)
-    end
+Primary[2].Value end end)
+function updateOptions()
     spawn(function()
         while task.wait() do
             pcall(function()
@@ -3605,6 +3599,16 @@ Primary[2].Value end end)x.MouseButton1Click:Connect(function()
             end)
         end
     end)
+end
+updateOptions()
+x.MouseButton1Click:Connect(function()
+    u.Value = u.Value or {}
+    local exists = table.find(u.Value, w)
+    if exists then
+        table.remove(u.Value, exists)
+    else
+        table.insert(u.Value, w)
+    end
     if u.ValueChanged then
         task.spawn(u.ValueChanged, u, u.Value)
     end
