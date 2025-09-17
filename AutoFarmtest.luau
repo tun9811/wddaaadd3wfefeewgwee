@@ -3643,7 +3643,7 @@ Enum.ScreenInsets.None,ZIndexBehavior=Enum.ZIndexBehavior.Sibling,DisplayOrder=
 fromRGB(0,0,0),BorderSizePixel=0,BackgroundTransparency=1,Size=UDim2.fromScale(1
 ,1),g'ScrollingFrame'{
     Name = 'PullDownMenu',
-    AutomaticSize = Enum.AutomaticSize.XY,
+    Size = UDim2.fromOffset(200, 150),
     BorderColor3 = Color3.fromRGB(0,0,0),
     BorderSizePixel = 0,
     ClipsDescendants = true,
