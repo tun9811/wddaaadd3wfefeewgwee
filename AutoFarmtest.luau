@@ -3641,16 +3641,48 @@ MenuContainer=(g'ScreenGui'{Name='Container',IgnoreGuiInset=true,ScreenInsets=
 Enum.ScreenInsets.None,ZIndexBehavior=Enum.ZIndexBehavior.Sibling,DisplayOrder=
 201,OnTopOfCoreBlur=true,g'CanvasGroup'{Name='MenuBody',BorderColor3=Color3.
 fromRGB(0,0,0),BorderSizePixel=0,BackgroundTransparency=1,Size=UDim2.fromScale(1
-,1),g'ScrollingFrame'{Name='PullDownMenu',AutomaticSize=Enum.AutomaticSize.XY,
-BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,AutomaticCanvasSize=Enum.
-AutomaticSize.Y,CanvasSize=UDim2.new(),ScrollBarImageColor3=Color3.fromRGB(0,0,0
-),ScrollBarImageTransparency=0.5,ScrollBarThickness=3,__dynamicKeys={
-BackgroundColor3=n.MenuBackground[1],BackgroundTransparency=n.MenuBackground[2]}
-,g'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,6)},g'UIStroke'{Name=
-'UIStroke',ApplyStrokeMode=Enum.ApplyStrokeMode.Border,Transparency=0.9},g
-'UIPadding'{Name='UIPadding',PaddingBottom=UDim.new(0,5),PaddingLeft=UDim.new(0,
-5),PaddingRight=UDim.new(0,5),PaddingTop=UDim.new(0,5)},g'UIListLayout'{Name=
-'UIListLayout',SortOrder=Enum.SortOrder.LayoutOrder,Padding=UDim.new(0,1)}}}})o.
+,1),g'ScrollingFrame'{
+    Name = 'PullDownMenu',
+    Size = UDim2.fromOffset(200, 150),
+    BorderColor3 = Color3.fromRGB(0,0,0),
+    BorderSizePixel = 0,
+    ClipsDescendants = true,
+    AutomaticCanvasSize = Enum.AutomaticSize.Y,
+    CanvasSize = UDim2.new(),
+    ScrollBarImageColor3 = Color3.fromRGB(0,0,0),
+    ScrollBarImageTransparency = 0.5,
+    ScrollBarThickness = 6,
+    __dynamicKeys = {
+        BackgroundColor3 = n.MenuBackground[1],
+        BackgroundTransparency = n.MenuBackground[2]
+    },
+    
+    g'UICorner'{
+        Name = 'UICorner',
+        CornerRadius = UDim.new(0, 6)
+    },
+    
+    g'UIStroke'{
+        Name = 'UIStroke',
+        ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
+        Transparency = 0.9
+    },
+    
+    g'UIPadding'{
+        Name = 'UIPadding',
+        PaddingBottom = UDim.new(0, 5),
+        PaddingLeft = UDim.new(0, 5),
+        PaddingRight = UDim.new(0, 5),
+        PaddingTop = UDim.new(0, 5)
+    },
+    
+    g'UIListLayout'{
+        Name = 'UIListLayout',
+        SortOrder = Enum.SortOrder.LayoutOrder,
+        Padding = UDim.new(0, 1)
+    }
+}
+}})o.
 MenuBody=(o.MenuContainer:FindFirstChild'MenuBody')o.Menu=(o.MenuBody:
 FindFirstChild'PullDownMenu')local u local v={Options=function(v)for w,x in
 ipairs(o.Options)do x:Destroy()end for w,x in ipairs(v)do t(u,x,w)end end,
