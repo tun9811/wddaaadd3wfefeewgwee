@@ -3670,8 +3670,11 @@ GetPropertyChangedSignal'AbsoluteSize':Connect(s)h.InputBegan:Connect(function(w
 )if u.Expanded and(w.UserInputType==Enum.UserInputType.MouseButton1 or w.
 UserInputType==Enum.UserInputType.Touch)then local x,y,z=h:GetMouseLocation(),k:
 GetGuiInset(),o.Menu local A,B,C=z.AbsolutePosition,z.AbsoluteSize,x.Y-y.Y if x.
-X<A.X or x.X>A.X+B.X or C<A.Y or C>A.Y+B.Y then u.Expanded=false end end end)o.
-Body.MouseButton1Click:Connect(function()u.Expanded=not u.Expanded end)return u
+X<A.X or x.X>A.X+B.X or C<A.Y or C>A.Y+B.Y then u.Expanded=false end end end)o.Body.MouseButton1Click:Connect(function()
+    u.Expanded = not u.Expanded
+    v.Expanded(u.Expanded)  -- เรียกฟังก์ชัน Expanded ทุกครั้งที่ toggle
+end)
+return u
 end end function a.J()local b,c=a.load'c',{Window=a.load'o',Section=a.load'p',
 Tab=a.load'q',PageSection=a.load's',Form=a.load't',Row=a.load'u',HStack=a.load
 'v',VStack=a.load'w',TitleStack=a.load'x',Label=a.load'y',Symbol=a.load'z',
