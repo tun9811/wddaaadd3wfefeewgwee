@@ -3671,7 +3671,11 @@ GetPropertyChangedSignal'AbsoluteSize':Connect(s)h.InputBegan:Connect(function(w
 UserInputType==Enum.UserInputType.Touch)then local x,y,z=h:GetMouseLocation(),k:
 GetGuiInset(),o.Menu local A,B,C=z.AbsolutePosition,z.AbsoluteSize,x.Y-y.Y if x.
 X<A.X or x.X>A.X+B.X or C<A.Y or C>A.Y+B.Y then u.Expanded=false end end end)o.Body.MouseButton1Click:Connect(function()
-    v.Expanded(not u.Expanded) -- toggle แบบตรงไปตรงมา
+    if not u.Expanded then
+        u.Expanded=true
+    else
+        u.Expanded=false
+    end
 end)
 return u
 end end function a.J()local b,c=a.load'c',{Window=a.load'o',Section=a.load'p',
