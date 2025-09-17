@@ -2481,7 +2481,7 @@ AutomaticSize=Enum.AutomaticSize.X,BackgroundColor3=Color3.fromRGB(255,255,255),
 BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
 FontFace=Font.new('rbxassetid://12187365364',Enum.FontWeight.SemiBold,Enum.
 FontStyle.Normal),LineHeight=0,RichText=true,Size=UDim2.fromOffset(0,20),Text=
-'Title',TextSize=16,__dynamicKeys={TextColor3=b.Theme.Text.Primary[1],
+'',TextSize=16,__dynamicKeys={TextColor3=b.Theme.Text.Primary[1],
 TextTransparency=b.Theme.Text.Primary[2]}}},e'UIPadding'{Name='UIPadding',
 PaddingLeft=UDim.new(0,12),PaddingRight=UDim.new(0,12)},e'Frame'{Name=
 'NavigationButtons',AutomaticSize=Enum.AutomaticSize.XY,BackgroundColor3=Color3.
@@ -2995,7 +2995,7 @@ TextColor3=b.Theme.Text.Secondary[1],TextTransparency=b.Theme.Text.Secondary[2]}
 },d'TextLabel'{Name='Title',AutomaticSize=Enum.AutomaticSize.XY,BackgroundColor3
 =Color3.fromRGB(255,255,255),BackgroundTransparency=1,BorderColor3=Color3.
 fromRGB(0,0,0),BorderSizePixel=0,FontFace=Font.new'rbxassetid://12187365364',
-RichText=true,Size=UDim2.new(0,0,0,16),Text='Title',TextColor3=Color3.fromRGB(0,
+RichText=true,Size=UDim2.new(0,0,0,16),Text='',TextColor3=Color3.fromRGB(0,
 0,0),TextSize=15,TextTransparency=0.15,TextTruncate=Enum.TextTruncate.AtEnd,
 TextWrapped=true,TextXAlignment=Enum.TextXAlignment.Left,__dynamicKeys={
 TextColor3=b.Theme.Text.Primary[1],TextTransparency=b.Theme.Text.Primary[2]}}})e
