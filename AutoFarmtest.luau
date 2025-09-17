@@ -3576,13 +3576,25 @@ LayoutOrder=1,RichText=true,Text=v,TextColor3=Color3.fromRGB(0,0,0),TextSize=15,
 TextTransparency=0.15,TextTruncate=Enum.TextTruncate.AtEnd,__dynamicKeys={
 TextColor3=b.Theme.Text.Primary[1],TextTransparency=b.Theme.Text.Primary[2]}},g
 'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,5)}})local y=x:FindFirstChild
-'Label'o.Options[w]=x.__instance x:GetPropertyChangedSignal'GuiState':Connect(
-function()if not u.Expanded then return end if x.GuiState==Enum.GuiState.Hover
-then x.BackgroundTransparency=b.Theme.Controls.SelectionFocused[2].Value y.
-TextColor3=b.Theme.Controls.SelectionFocusedAccent[1].Value y.TextTransparency=b
-.Theme.Controls.SelectionFocusedAccent[2].Value else x.BackgroundTransparency=1
-y.TextColor3=b.Theme.Text.Primary[1].Value y.TextTransparency=b.Theme.Text.
-Primary[2].Value end end)
+'Label'o.Options[w]=x.__instance x:GetPropertyChangedSignal'GuiState':Connect(function()
+    if not u.Expanded then return end
+    spawn(function()
+        while task.wait() do
+            pcall(function()
+                if x.GuiState==Enum.GuiState.Hover then
+                    x.BackgroundTransparency=b.Theme.Controls.SelectionFocused[2].Value
+                    y.TextColor3=b.Theme.Controls.SelectionFocusedAccent[1].Value
+                    y.TextTransparency=b.Theme.Controls.SelectionFocusedAccent[2].Value
+                else
+                end
+            end)
+        end
+    end)
+    x.BackgroundTransparency=1
+    y.TextColor3=b.Theme.Text.Primary[1].Value
+    y.TextTransparency=b.Theme.Text.Primary[2].Value
+end)
+
 function updateOptions()
     spawn(function()
         while task.wait() do
