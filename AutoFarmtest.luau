@@ -3614,15 +3614,21 @@ function updateOptions()
 end
 updateOptions()
 x.MouseButton1Click:Connect(function()
-    u.Value = u.Value or {}
-    local exists = table.find(u.Value, w)
-    if exists then
-        table.remove(u.Value, exists)
+    if u.Multi then
+        u.Value = u.Value or {}
+        local exists = table.find(u.Value, w)
+        if exists then
+            table.remove(u.Value, exists)
+        else
+            table.insert(u.Value, w)
+        end
+        if u.ValueChanged then
+            task.spawn(u.ValueChanged, u, u.Value)
+        end
     else
-        table.insert(u.Value, w)
-    end
-    if u.ValueChanged then
-        task.spawn(u.ValueChanged, u, u.Value)
+        if u then
+            u.Expanded=false u.Value=w 
+        end
     end
 end)
 end c=c or{}c.Expanded=c.Expanded or false o.
