@@ -3609,7 +3609,7 @@ function updateOptions()
                     end
                 elseif game:GetService("CoreGui").HiddenUI:FindFirstChild("Cascade") and not u.Multi then
                     for i, opt in ipairs(o.Options) do
-                        if i then
+                        if u.Value == i then
                             opt.BackgroundTransparency = 0
                         else
                             opt.BackgroundTransparency = 1
