@@ -3599,9 +3599,17 @@ function updateOptions()
     spawn(function()
         while task.wait() do
             pcall(function()
-                if game:GetService("CoreGui").HiddenUI:FindFirstChild("Cascade") then
+                if game:GetService("CoreGui").HiddenUI:FindFirstChild("Cascade") and u.Multi then
                     for i, opt in ipairs(o.Options) do
                         if table.find(u.Value, i) then
+                            opt.BackgroundTransparency = 0
+                        else
+                            opt.BackgroundTransparency = 1
+                        end
+                    end
+                elseif game:GetService("CoreGui").HiddenUI:FindFirstChild("Cascade") and not u.Multi then
+                    for i, opt in ipairs(o.Options) do
+                        if i then
                             opt.BackgroundTransparency = 0
                         else
                             opt.BackgroundTransparency = 1
