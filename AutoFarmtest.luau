@@ -2896,16 +2896,8 @@ TextTransparency=b.Theme.Text.Tertiary[2]}}}}))j.Layout=(j.SidebarGroup:
 FindFirstChild'UIListLayout')j.SectionHeader=(j.SidebarGroup:FindFirstChild
 'SectionHeader')j.Title=(j.SectionHeader:FindFirstChild'Title')j.Disclosure=(j.
 SectionHeader:FindFirstChild'Disclosure')j.DisclosureImage=(j.Disclosure:
-FindFirstChild'DisclosureImage')local l={}local m={
-Title=function(m) 
-    if i.Title.Text == "" then
-        i.Title.Visible = false
-        i.Title.Text = ""
-    else
-        i.Title.Visible = true
-        i.Title.Text = m
-    end
-end,Disclosure=function(m)j.Disclosure.Visible=m j.SidebarGroup.Active=m end,
+FindFirstChild'DisclosureImage')local l={}local m={Title=function(m)j.Title.Text
+=m end,Disclosure=function(m)j.Disclosure.Visible=m j.SidebarGroup.Active=m end,
 Expanded=function(m,n)n=(n==nil and true)or false local o,p=j.SidebarGroup.
 __instance,j.DisclosureImage o.AutomaticSize=Enum.AutomaticSize.None for q,r in
 pairs(l)do r:Disconnect()table.remove(l,q)end local q=function(q)local r=m and j
