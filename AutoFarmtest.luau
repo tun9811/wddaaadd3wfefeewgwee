@@ -3576,14 +3576,70 @@ LayoutOrder=1,RichText=true,Text=v,TextColor3=Color3.fromRGB(0,0,0),TextSize=15,
 TextTransparency=0.15,TextTruncate=Enum.TextTruncate.AtEnd,__dynamicKeys={
 TextColor3=b.Theme.Text.Primary[1],TextTransparency=b.Theme.Text.Primary[2]}},g
 'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,5)}})local y=x:FindFirstChild
-'Label'o.Options[w]=x.__instance x:GetPropertyChangedSignal'GuiState':Connect(
-function()if not u.Expanded then return end if x.GuiState==Enum.GuiState.Hover
-then x.BackgroundTransparency=b.Theme.Controls.SelectionFocused[2].Value y.
-TextColor3=b.Theme.Controls.SelectionFocusedAccent[1].Value y.TextTransparency=b
-.Theme.Controls.SelectionFocusedAccent[2].Value else x.BackgroundTransparency=1
-y.TextColor3=b.Theme.Text.Primary[1].Value y.TextTransparency=b.Theme.Text.
-Primary[2].Value end end)x.MouseButton1Click:Connect(function()if u then u.
-Expanded=false u.Value=w end end)end c=c or{}c.Expanded=c.Expanded or false o.
+'Label'o.Options[w]=x.__instance x:GetPropertyChangedSignal'GuiState':Connect(function()
+    if not u.Expanded then return end
+    spawn(function()
+        while task.wait() do
+            pcall(function()
+                if x.GuiState==Enum.GuiState.Hover then
+                    x.BackgroundTransparency=b.Theme.Controls.SelectionFocused[2].Value
+                    y.TextColor3=b.Theme.Controls.SelectionFocusedAccent[1].Value
+                    y.TextTransparency=b.Theme.Controls.SelectionFocusedAccent[2].Value
+                else
+                end
+            end)
+        end
+    end)
+    x.BackgroundTransparency=1
+    y.TextColor3=b.Theme.Text.Primary[1].Value
+    y.TextTransparency=b.Theme.Text.Primary[2].Value
+end)
+
+function updateOptions()
+    spawn(function()
+        while task.wait() do
+            pcall(function()
+                if game:GetService("CoreGui").HiddenUI:FindFirstChild("Cascade") and u.Multi then
+                    for i, opt in ipairs(o.Options) do
+                        if table.find(u.Value, i) then
+                            opt.BackgroundTransparency = 0
+                        else
+                            opt.BackgroundTransparency = 1
+                        end
+                    end
+                elseif game:GetService("CoreGui").HiddenUI:FindFirstChild("Cascade") and not u.Multi then
+                    for i, opt in ipairs(o.Options) do
+                        if u.Value == i then
+                            opt.BackgroundTransparency = 0
+                        else
+                            opt.BackgroundTransparency = 1
+                        end
+                    end
+                end
+            end)
+        end
+    end)
+end
+updateOptions()
+x.MouseButton1Click:Connect(function()
+    if u.Multi then
+        u.Value = u.Value or {}
+        local exists = table.find(u.Value, w)
+        if exists then
+            table.remove(u.Value, exists)
+        else
+            table.insert(u.Value, w)
+        end
+        if u.ValueChanged then
+            task.spawn(u.ValueChanged, u, u.Value)
+        end
+    else
+        if u then
+            u.Expanded=false u.Value=w 
+        end
+    end
+end)
+end c=c or{}c.Expanded=c.Expanded or false o.
 Body=(e.Apply(c,g'TextButton'{Name='PullDownButton',AutomaticSize=Enum.
 AutomaticSize.XY,BackgroundColor3=Color3.fromRGB(255,255,255),
 BackgroundTransparency=1,BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,
@@ -3611,16 +3667,48 @@ MenuContainer=(g'ScreenGui'{Name='Container',IgnoreGuiInset=true,ScreenInsets=
 Enum.ScreenInsets.None,ZIndexBehavior=Enum.ZIndexBehavior.Sibling,DisplayOrder=
 201,OnTopOfCoreBlur=true,g'CanvasGroup'{Name='MenuBody',BorderColor3=Color3.
 fromRGB(0,0,0),BorderSizePixel=0,BackgroundTransparency=1,Size=UDim2.fromScale(1
-,1),g'ScrollingFrame'{Name='PullDownMenu',AutomaticSize=Enum.AutomaticSize.XY,
-BorderColor3=Color3.fromRGB(0,0,0),BorderSizePixel=0,AutomaticCanvasSize=Enum.
-AutomaticSize.Y,CanvasSize=UDim2.new(),ScrollBarImageColor3=Color3.fromRGB(0,0,0
-),ScrollBarImageTransparency=0.5,ScrollBarThickness=3,__dynamicKeys={
-BackgroundColor3=n.MenuBackground[1],BackgroundTransparency=n.MenuBackground[2]}
-,g'UICorner'{Name='UICorner',CornerRadius=UDim.new(0,6)},g'UIStroke'{Name=
-'UIStroke',ApplyStrokeMode=Enum.ApplyStrokeMode.Border,Transparency=0.9},g
-'UIPadding'{Name='UIPadding',PaddingBottom=UDim.new(0,5),PaddingLeft=UDim.new(0,
-5),PaddingRight=UDim.new(0,5),PaddingTop=UDim.new(0,5)},g'UIListLayout'{Name=
-'UIListLayout',SortOrder=Enum.SortOrder.LayoutOrder,Padding=UDim.new(0,1)}}}})o.
+,1),g'ScrollingFrame'{
+    Name = 'PullDownMenu',
+    Size = UDim2.fromOffset(200, 150),
+    BorderColor3 = Color3.fromRGB(0,0,0),
+    BorderSizePixel = 0,
+    ClipsDescendants = true,
+    AutomaticCanvasSize = Enum.AutomaticSize.Y,
+    CanvasSize = UDim2.new(),
+    ScrollBarImageColor3 = Color3.fromRGB(0,0,0),
+    ScrollBarImageTransparency = 0.5,
+    ScrollBarThickness = 6,
+    __dynamicKeys = {
+        BackgroundColor3 = n.MenuBackground[1],
+        BackgroundTransparency = n.MenuBackground[2]
+    },
+    
+    g'UICorner'{
+        Name = 'UICorner',
+        CornerRadius = UDim.new(0, 6)
+    },
+    
+    g'UIStroke'{
+        Name = 'UIStroke',
+        ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
+        Transparency = 0.9
+    },
+    
+    g'UIPadding'{
+        Name = 'UIPadding',
+        PaddingBottom = UDim.new(0, 5),
+        PaddingLeft = UDim.new(0, 5),
+        PaddingRight = UDim.new(0, 5),
+        PaddingTop = UDim.new(0, 5)
+    },
+    
+    g'UIListLayout'{
+        Name = 'UIListLayout',
+        SortOrder = Enum.SortOrder.LayoutOrder,
+        Padding = UDim.new(0, 1)
+    }
+}
+}})o.
 MenuBody=(o.MenuContainer:FindFirstChild'MenuBody')o.Menu=(o.MenuBody:
 FindFirstChild'PullDownMenu')local u local v={Options=function(v)for w,x in
 ipairs(o.Options)do x:Destroy()end for w,x in ipairs(v)do t(u,x,w)end end,
@@ -3640,8 +3728,11 @@ GetPropertyChangedSignal'AbsoluteSize':Connect(s)h.InputBegan:Connect(function(w
 )if u.Expanded and(w.UserInputType==Enum.UserInputType.MouseButton1 or w.
 UserInputType==Enum.UserInputType.Touch)then local x,y,z=h:GetMouseLocation(),k:
 GetGuiInset(),o.Menu local A,B,C=z.AbsolutePosition,z.AbsoluteSize,x.Y-y.Y if x.
-X<A.X or x.X>A.X+B.X or C<A.Y or C>A.Y+B.Y then u.Expanded=false end end end)o.
-Body.MouseButton1Click:Connect(function()u.Expanded=not u.Expanded end)return u
+X<A.X or x.X>A.X+B.X or C<A.Y or C>A.Y+B.Y then u.Expanded=false end end end)o.Body.MouseButton1Click:Connect(function()
+    v.Expanded(not u.Expanded) -- toggle แบบถูกต้อง
+    u.Expanded = not u.Expanded -- update state
+end)
+return u
 end end function a.J()local b,c=a.load'c',{Window=a.load'o',Section=a.load'p',
 Tab=a.load'q',PageSection=a.load's',Form=a.load't',Row=a.load'u',HStack=a.load
 'v',VStack=a.load'w',TitleStack=a.load'x',Label=a.load'y',Symbol=a.load'z',
