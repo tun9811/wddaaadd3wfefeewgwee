@@ -1,20 +1,3 @@
---!nolint
---!nocheck
---!optimize 2
-
---[[
-    @author biggaboy212
-    @name Cascade
-    @description A Luau UI library based on macOS Sequoia.
-    @license MIT License
-
-    @buildDate "2025-09-14T04:58:05.262563900+00:00"
-    @buildCfg "Release"
-    @buildVers "v1.0.0"
-
-    This file was automatically generated with darklua, it is not intended for manual editing.
---]]
-
 local a a={cache={},load=function(b)if not a.cache[b]then a.cache[b]={c=a[b]()}
 end return a.cache[b].c end}do function a.a()local b={}b.Clone=function(c)local
 d if type(c)=='function'then d=clonefunction and clonefunction(c)elseif typeof(c
